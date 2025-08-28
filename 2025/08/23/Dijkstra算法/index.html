@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="zh"><head>
+<title>Dijkstra算法 - light的赛博小窝</title>
+<meta charset="UTF-8">
+<meta name="keywords" content="博客">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<meta name="description" content="Dijkstra 算法是一种快速，便利地计算非负权图上单源最短路的算法。什么？你问我什么是图？好吧，让我们从头开始。图说白了就是许多连线的点，可以近似为城市和中间的路。图分为有向图和无向图，可以近似为单向路和双向路。权值就是通过这条路所需的代价，是一个数字。而单源最短路就是两个点之间的最短路径。  而Dijkstra 算法的方法就是先将起点与其他点的举例设为inf,与自己的距离设为0. 再把点分为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dijkstra算法">
+<meta property="og:url" content="https://light5qaq.github.io/2025/08/23/Dijkstra%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="light的赛博小窝">
+<meta property="og:description" content="Dijkstra 算法是一种快速，便利地计算非负权图上单源最短路的算法。什么？你问我什么是图？好吧，让我们从头开始。图说白了就是许多连线的点，可以近似为城市和中间的路。图分为有向图和无向图，可以近似为单向路和双向路。权值就是通过这条路所需的代价，是一个数字。而单源最短路就是两个点之间的最短路径。  而Dijkstra 算法的方法就是先将起点与其他点的举例设为inf,与自己的距离设为0. 再把点分为">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-08-22T23:40:54.000Z">
+<meta property="article:modified_time" content="2025-08-23T01:56:19.410Z">
+<meta property="article:author" content="light5QAQ">
+<meta property="article:tag" content="Code">
+<meta name="twitter:card" content="summary">
+
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1756390337859">
+
+<link rel="stylesheet" href="/css/style.css?v=1756390337859">
+
+
+
+
+    
+        <link rel="stylesheet" href="/custom.css?v=1756390337859">
+    
+
+
+
+<script src="/lib/mdui_043tiny/mdui.js" async></script>
+<script src="/lib/fancybox/fancybox.umd.js" async></script>
+<script src="/lib/lax.min.js" async></script>
+
+
+<script async src="/js/app.js?v=1756390337859"></script>
+
+ 
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4D4ZJ9G024"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+
+  gtag("config", "G-4D4ZJ9G024");
+</script>
+
+
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+<meta name="generator" content="Hexo 7.3.0"></head><body class="nexmoe mdui-drawer-body-left"><div id="nexmoe-background"><div class="nexmoe-bg" style="background-image: url(https://img-baofun.zhhainiao.com/fs/7e3b72744eed5f25a64ba45b355c4838.jpg)"></div><div class="mdui-appbar mdui-shadow-0"><div class="mdui-toolbar"><a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: &#039;#drawer&#039;, swipe: true}" title="menu"><i class="mdui-icon nexmoefont icon-menu"></i></a><div class="mdui-toolbar-spacer"></div><a class="mdui-btn mdui-btn-icon" href="/" title="light5QAQ"><img src="https://ts4.tc.mm.bing.net/th/id/OIP-C.gjakIQWnviPIy3efnqpBUwHaG1?rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3" alt="light5QAQ"></a></div></div></div><div id="nexmoe-header"><div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="light5QAQ">
+            <img src="https://ts4.tc.mm.bing.net/th/id/OIP-C.gjakIQWnviPIy3efnqpBUwHaG1?rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3" alt="light5QAQ" alt="light5QAQ">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>6</div>
+        <div><span>标签</span>6</div>
+        <div><span>分类</span>4</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" target="_blank" rel="noopener" href="https://nexmoe.com/donate.html" title="给我赞助">
+            <i class="mdui-list-item-icon nexmoefont icon-coffee"></i>
+            <div class="mdui-list-item-content">
+                给我赞助
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" target="_blank" rel="noopener" href="https://i.nexmoe.com/" title="关于博主">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博主
+            </div>
+        </a>
+        
+    </div>
+    
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
+</div>
+
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://qun.qq.com/universal-share/share?ac=1&authKey=ba1tDTzORoRik1RqXRcnUelcuyWhMBJb2wHNpmB4h5zmNzD%2Bdezf0b33TnateSuV&busi_data=eyJncm91cENvZGUiOiIxMDIxMDgxNjQ5IiwidG9rZW4iOiJLd3RDY3pCU0k1dnpHRzBTclNmeEVXMGZLVlR6L1B0ZURMNDlzK0JYV282UENVaExqWnQ4WlIxdEE3QlhUZHg2IiwidWluIjoiMTE2MjkyMDM3MSJ9&data=wbYH-67H2R7aXKWocMq6gZRpnwi288wcOZkgIolPqlyjJpWnC0CHygDXsofQXoy_b-YeLM9OcQKCsNutjB5HZQ&svctype=4&tempid=h5_group_info"
+			target="_blank"
+			mdui-tooltip="{content: 'QQ群'}"
+			style="
+				color: rgb(249, 174, 8);
+				background-color: rgba(249, 174, 8, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-QQ"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://space.bilibili.com/547821271"
+			target="_blank"
+			mdui-tooltip="{content: '哔哩哔哩'}"
+			style="
+				color: rgb(231, 106, 141);
+				background-color: rgba(231, 106, 141, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-bilibili"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/light5QAQ/"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.zhihu.com/people/light-97-4-7"
+			target="_blank"
+			mdui-tooltip="{content: '知乎'}"
+			style="
+				color: rgb(30, 136, 229);
+				background-color: rgba(30, 136, 229, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-zhihu"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.luogu.com.cn/user/565142"
+			target="_blank"
+			mdui-tooltip="{content: '洛谷'}"
+			style="
+				color: rgb(247, 132, 34);
+				background-color: rgba(247, 132, 34, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-rss"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Chat/">Chat</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Entertainment/">Entertainment</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Philosophy/">Philosophy</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Tech/">Tech</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/Anime/" style="font-size: 10px;">Anime</a> <a href="/tags/Blog/" style="font-size: 15px;">Blog</a> <a href="/tags/Code/" style="font-size: 10px;">Code</a> <a href="/tags/Help/" style="font-size: 10px;">Help</a> <a href="/tags/Theory/" style="font-size: 20px;">Theory</a> <a href="/tags/Welcome/" style="font-size: 10px;">Welcome</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(6);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+    
+        
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/">2025</a><span class="archive-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/08/24/light%E5%A6%82%E6%98%AF%E8%AF%B4%E2%80%94%E2%80%94AKA%E3%80%8AHello%20World%E3%80%8B%E8%AF%A6%E8%A7%A3/">light如是说——AKA《Hello World》详解</a>
+          </li>
+        
+          <li>
+            <a href="/2025/08/23/%E5%93%B2%E5%AD%A6%E6%80%9D%E8%80%83/">哲学思考</a>
+          </li>
+        
+          <li>
+            <a href="/2025/08/23/Dijkstra%E7%AE%97%E6%B3%95/">Dijkstra算法</a>
+          </li>
+        
+          <li>
+            <a href="/2025/08/22/%E4%B8%AD%E4%BA%8C%E7%97%85%E3%81%A7%E3%82%82%E6%81%8B%E3%81%8C%E3%81%97%E3%81%9F%E3%81%84%E4%B8%AD%E7%9A%84%E6%82%B2%E5%89%A7%E8%89%B2%E5%BD%A9%E4%B8%8E%E5%86%85%E6%A0%B8%E8%A7%A3%E6%9E%90/">中二病でも恋がしたい中的悲剧色彩与内核解析</a>
+          </li>
+        
+          <li>
+            <a href="/2025/08/22/Blog%E5%88%9B%E5%BB%BA%E6%8C%87%E5%8D%97/">Blog创建指南</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-link">
+		<ul>
+        
+            <li>
+                <a href="https://lab.magiconch.com/" target="_blank" >
+                    <img src="https://t.magiconch.com/static/img/avatar.jpg" alt="神奇海螺试验场by卜卜口"></img>
+                    <p>神奇海螺试验场by卜卜口</p>
+                </a>
+            </li>
+        
+		</ul>
+    </div>
+</div>
+<style>
+.nexmoe-widget-wrap .nexmoe-link ul li a {
+    text-align : center;
+}
+.nexmoe-widget-wrap .nexmoe-link ul li a img {
+    max-width : 100%;
+}
+.nexmoe-widget-wrap .nexmoe-link ul li a p {
+    margin: 10px 0;
+}
+</style>
+
+    
+   
+    <div class="nexmoe-copyright">
+        &copy; 2025 light5QAQ
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+	<div style="font-size: 13px">
+            <link rel="stylesheet" href="https://widget.heweather.net/standard/static/css/he-standard.css?v=1.4.0"><script src="https://widget.heweather.net/standard/static/js/he-standard.js?v=1.4.0"></script><script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            本站总访问量  <a id="busuanzi_value_site_pv"></a> 次<br>
+            本站访客数<a id="busuanzi_value_site_uv"></a>人次
+   	</div>
+        <br><a target="_blank" href="https://beian.miit.gov.cn/">鄂ICP备2020018486号</a>
+<br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral">
+<img src="https://i.dawnlab.me/c0268c1e6cfd0863d6ba35be1575941a.png" width="150px"></a>
+
+    </div>
+</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><div class="nexmoe-post">
+  <article>
+    
+        <div class="nexmoe-post-cover absolute" style="padding-top: 50%;"> 
+            <img src="https://static.fuxi.netease.com/fuxi-official/web/20220920/8b78d0655a0c99060dcab78fcceed429.jpg" alt="Dijkstra算法" loading="lazy">
+            <h1>Dijkstra算法</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2025年08月23日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/Tech/">Tech</a>
+        
+        
+    <a><i class="nexmoefont icon-areachart"></i>约1.4k字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要6分钟</a>
+
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <p><strong>Dijkstra 算法</strong>是一种快速，便利地计算非负权图上单源最短路的算法。<br>什么？你问我什么是图？<br>好吧，让我们从头开始。<br>图说白了就是许多连线的点，可以近似为城市和中间的路。图分为有向图和无向图，可以近似为单向路和双向路。权值就是通过这条路所需的代价，是一个数字。而单源最短路就是两个点之间的最短路径。</p>
+<hr>
+<p>而<strong>Dijkstra 算法</strong>的方法就是先将起点与其他点的举例设为inf,与自己的距离设为0. 再把点分为两种,已确定最短路长度的点集S,和未确定最短路长度的点集T. 一开始所有的点都属于T.<br>然后重复这些操作：</p>
+<ol>
+<li>从T中,选取一个最短路长度最小的结点，移到S中.</li>
+<li>对那些刚刚被加入S集合的结点的所有出边执行松弛操作.<br>直到T为空,算法结束.<br>至于什么是出边,就是可以出去的单行道,什么是松弛,就类似dp,重新计算距离.<br>通常使用朴素做法或优先队列做法.</li>
+</ol>
+<hr>
+<p>很简单对吧，那么你可以开始做题了。</p>
+<blockquote>
+<h3 id="P4779-【模板】单源最短路径（标准版）"><a href="#P4779-【模板】单源最短路径（标准版）" class="headerlink" title="P4779 【模板】单源最短路径（标准版）"></a>P4779 【模板】单源最短路径（标准版）</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个n个点,m条有向边的带非负权图,请你计算从s出发,到每个点的距离.<br>数据保证你能从s出发到任意点.</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行为三个正整数n,m,s. 第二行起m行,每行三个非负整数u[i],v[i],w[i],表示从 u[i]到v[i]有一条权值为w[i]的有向边.</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一行n个空格分隔的非负整数，表示s到每个点的距离。&#96;</p>
+</blockquote>
+<p>既然是模板题，那就直接上模板吧！</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e5</span><span class="hljs-number">+5</span>;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> inf=<span class="hljs-number">0x3f3f3f3f</span>;<br><span class="hljs-type">int</span> vis[N]; <span class="hljs-comment">//</span><br><span class="hljs-type">int</span> dis[N]; <span class="hljs-comment">//存储点s与其他点的距离 </span><br><span class="hljs-type">int</span> n,m,s;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">node</span>&#123;<br>	<span class="hljs-type">int</span> v,w;<br>	<span class="hljs-type">bool</span> <span class="hljs-keyword">operator</span> &lt;(<span class="hljs-type">const</span> node &amp;x)<span class="hljs-type">const</span>&#123;<br>		<span class="hljs-keyword">return</span> x.w&lt;w;<br>	&#125; <span class="hljs-comment">//重定向 小于号把priority_queue变成小根堆 </span><br>&#125;; <span class="hljs-comment">//存储最短路</span><br>vector&lt;node&gt; g[N]; <span class="hljs-comment">//存距离</span><br>priority_queue&lt;node&gt; q; <span class="hljs-comment">//优先队列默认大根堆</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dij</span><span class="hljs-params">()</span></span>&#123;<br>	dis[s]=<span class="hljs-number">0</span>; <span class="hljs-comment">//自己为0</span><br>	vis[s]=<span class="hljs-number">1</span>; <span class="hljs-comment">//</span><br>	q.<span class="hljs-built_in">push</span>(node&#123;s,<span class="hljs-number">0</span>&#125;); <span class="hljs-comment">//存入s本身</span><br>	<span class="hljs-keyword">while</span>(!q.<span class="hljs-built_in">empty</span>())&#123;<br>		node t=q.<span class="hljs-built_in">top</span>();<br>		q.<span class="hljs-built_in">pop</span>();<br>		<span class="hljs-type">int</span> now=t.v;<br>		vis[now]=<span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;g[now].<span class="hljs-built_in">size</span>();i++)&#123;<br>			<span class="hljs-type">int</span> v=g[now][i].v;<br>			<span class="hljs-keyword">if</span>(dis[v]&gt;dis[now]+g[now][i].w)&#123;<br>				dis[v]=dis[now]+g[now][i].w;<br>				<span class="hljs-keyword">if</span>(vis[v]==<span class="hljs-number">0</span>)&#123;<br>					q.<span class="hljs-built_in">push</span>(node&#123;v,dis[v]&#125;);<br>					vis[v]=<span class="hljs-number">1</span>;<br>				&#125;<br>			&#125;<br>		&#125;<br>	&#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;	<br>	cin&gt;&gt;n&gt;&gt;m&gt;&gt;s;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>		dis[i]=inf;  <span class="hljs-comment">//存为inf</span><br>	&#125;<br>	<span class="hljs-keyword">while</span>(m--)&#123;<br>		<span class="hljs-type">int</span> u,v,w;<br>		cin&gt;&gt;u&gt;&gt;v&gt;&gt;w;<br>		g[u].<span class="hljs-built_in">push_back</span>(node&#123;v,w&#125;); <span class="hljs-comment">//存储权值</span><br>	&#125;<br>	<span class="hljs-built_in">dij</span>(); <span class="hljs-comment">//Dijkstra</span><br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>		cout&lt;&lt;dis[i]&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>	&#125;<br> 	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>你看懂了吗？<br>很好！那么我们再来做一道题练练手！</p>
+<blockquote>
+<h3 id="P1629-邮递员送信"><a href="#P1629-邮递员送信" class="headerlink" title="P1629 邮递员送信"></a>P1629 邮递员送信</h3><h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p>有一个邮递员要送东西,邮局在节点1. 他总共要送n−1样东西,其目的地分别是节点2到节点n. 由于这个城市的交通比较繁忙,因此所有的道路都是单行的,共有m条道路. 这个邮递员每次只能带一样东西,并且运送每件物品过后必须返回邮局. 求送完这n−1样东西并且最终回到邮局最少需要的时间.</p>
+<h4 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包括两个整数,n和m,表示城市的节点数量和道路数量.<br>第二行到第(m+1)行,每行三个整数,u,v,w,表示从u到v有一条通过时间为w的道路.</p>
+<h4 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出仅一行,包含一个整数,为最少需要的时间.</p>
+</blockquote>
+<p>不难发现邮递员每次去要走最短路，回也要走最短路，那么只需要简单的正反跑Dijkstra就好了</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e6</span><span class="hljs-number">+5</span>;<br><span class="hljs-type">int</span> n,m,u,v,w;<br><span class="hljs-type">long</span> <span class="hljs-type">long</span> ans;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">node</span>&#123;<br>    <span class="hljs-type">int</span> x;<br>    <span class="hljs-type">long</span> <span class="hljs-type">long</span> dis;<br>    <span class="hljs-built_in">node</span>(<span class="hljs-type">int</span> X, <span class="hljs-type">long</span> <span class="hljs-type">long</span> DIS) :  <span class="hljs-built_in">x</span>(X),<span class="hljs-built_in">dis</span>(DIS)&#123;&#125; <span class="hljs-comment">//这是什么意思呢</span><br>    <span class="hljs-type">bool</span> <span class="hljs-keyword">operator</span> &gt;(<span class="hljs-type">const</span> node&amp;o) <span class="hljs-type">const</span>&#123;<span class="hljs-keyword">return</span> dis&gt;o.dis;&#125;<br>&#125;;<br><span class="hljs-type">int</span> inf=INT_MAX;<br><span class="hljs-type">int</span> ver[N],wei[N],nex[N],head[N],tot; <span class="hljs-comment">//依次存储v w 下一个点 计数</span><br>priority_queue&lt;node,vector&lt;node&gt;,greater&lt;node&gt; &gt; q;<br><span class="hljs-type">long</span> <span class="hljs-type">long</span> dis[N];<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">addedge</span><span class="hljs-params">(<span class="hljs-type">int</span> u, <span class="hljs-type">int</span> v, <span class="hljs-type">int</span> w)</span></span>&#123; <span class="hljs-comment">//建边</span><br>    ver[tot]=v,wei[tot]=w,nex[tot]=head[u],head[u]=tot++;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dij</span><span class="hljs-params">(<span class="hljs-type">int</span> s)</span></span>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n&lt;&lt;<span class="hljs-number">1</span>;++i) dis[i]=inf;<br>    dis[s]=<span class="hljs-number">0</span>;<br>    q.<span class="hljs-built_in">push</span>(<span class="hljs-built_in">node</span>(s,<span class="hljs-number">0</span>));<br>    <span class="hljs-keyword">while</span>(!q.<span class="hljs-built_in">empty</span>())&#123;<br>        node cur=q.<span class="hljs-built_in">top</span>();<br>		q.<span class="hljs-built_in">pop</span>();<br>        <span class="hljs-keyword">if</span>(dis[cur.x]&lt;cur.dis) <span class="hljs-keyword">continue</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=head[cur.x];~i;i=nex[i])&#123;<br>            <span class="hljs-keyword">if</span>(dis[ver[i]]&gt;cur.dis+wei[i]) &#123;<br>                dis[ver[i]]=cur.dis+wei[i];<br>                q.<span class="hljs-built_in">push</span>(<span class="hljs-built_in">node</span>(ver[i],dis[ver[i]]));<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;    <br>	<span class="hljs-built_in">memset</span>(head,<span class="hljs-number">-1</span>,<span class="hljs-built_in">sizeof</span>(head));<br>    cin&gt;&gt;n&gt;&gt;m;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=m<span class="hljs-number">+1</span>;i++)&#123;<br>        cin&gt;&gt;u&gt;&gt;v&gt;&gt;w;<br>		<span class="hljs-built_in">addedge</span>(u,v,w);<br>		<span class="hljs-built_in">addedge</span>(v+n,u+n,w); <span class="hljs-comment">//反向</span><br>    &#125;<br>	<span class="hljs-built_in">dij</span>(<span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">2</span>;i&lt;=n;++i) ans+=dis[i];<br>    <span class="hljs-built_in">dij</span>(<span class="hljs-number">1</span>+n);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">2</span>+n;i&lt;=n&lt;&lt;<span class="hljs-number">1</span>;++i) ans+=dis[i];<br>    cout&lt;&lt;ans&lt;&lt;endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+    <p><img src="https://ts1.tc.mm.bing.net/th/id/R-C.1ca64a49b72a80af601e04b5dd28a25b?rik=XJHcbJf%2f3A5kRw&riu=http%3a%2f%2fwww.jongordon.com%2fpositivetip%2fsocialshare%2fThankYou.jpg&ehk=AEiksOmPd0XgKYwyMvcGR1Wn4ix63Wkt1Nu4yrBGDQI%3d&risl=&pid=ImgRaw&r=0" loading="lazy"></p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>light5QAQ<br>
+        <strong>本文链接：</strong><a href="https://light5qaq.github.io/2025/08/23/Dijkstra%E7%AE%97%E6%B3%95/" title="https:&#x2F;&#x2F;light5qaq.github.io&#x2F;2025&#x2F;08&#x2F;23&#x2F;Dijkstra%E7%AE%97%E6%B3%95&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;light5qaq.github.io&#x2F;2025&#x2F;08&#x2F;23&#x2F;Dijkstra%E7%AE%97%E6%B3%95&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Code/" rel="tag">Code</a>
+    
+</div>
+  
+  
+    <script async src="/js/copy-codeblock.js?v=1756390337813"></script>
+  
+
+  
+      <div class="nexmoe-post-footer">
+          请在你的配置文件中设置 slotComment
+
+      </div>
+  
+</div></div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
+        <div class="nexmoe-tool">
+
+            
+
+            
+            
+            <button class="mdui-fab catalog" style="overflow:unset;">
+                <i class="nexmoefont icon-i-catalog"></i>
+                <div class="nexmoe-toc">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#P4779-%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%EF%BC%88%E6%A0%87%E5%87%86%E7%89%88%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">P4779 【模板】单源最短路径（标准版）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.3.</span> <span class="toc-text">输出格式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P1629-%E9%82%AE%E9%80%92%E5%91%98%E9%80%81%E4%BF%A1"><span class="toc-number">2.</span> <span class="toc-text">P1629 邮递员送信</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-1"><span class="toc-number">2.1.</span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-1"><span class="toc-number">2.2.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-1"><span class="toc-number">2.3.</span> <span class="toc-text">输出格式</span></a></li></ol></li></ol>
+                </div>
+            </button>
+            
+
+            
+
+            <a href="#nexmoe-content" class="backtop toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+        </div>
+    </div>
+</div></div><div id="nexmoe-footer"><!--!--></div><div id="nexmoe-search-space"><div class="search-container"><div class="search-header"><div class="search-input-container"><input class="search-input" type="text" placeholder="搜索" onInput="sinput();"></div><a class="search-close" onclick="sclose();">×</a></div><div class="search-body"></div></div></div><div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
+</div></body></html>
