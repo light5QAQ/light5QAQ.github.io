@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
 
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-<meta name="description" content="Dijkstra 算法是一种快速，便利地计算非负权图上单源最短路的算法。什么？你问我什么是图？好吧，让我们从头开始。图说白了就是许多连线的点，可以近似为城市和中间的路。图分为有向图和无向图，可以近似为单向路和双向路。权值就是通过这条路所需的代价，是一个数字。而单源最短路就是两个点之间的最短路径。  而Dijkstra 算法的方法就是先将起点与其他点的举例设为inf,与自己的距离设为0. 再把点分为">
+<meta name="description" content="Dijkstra算法的简介和练习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dijkstra算法">
 <meta property="og:url" content="https://light5qaq.github.io/2025/08/23/Dijkstra%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="light的赛博小窝">
-<meta property="og:description" content="Dijkstra 算法是一种快速，便利地计算非负权图上单源最短路的算法。什么？你问我什么是图？好吧，让我们从头开始。图说白了就是许多连线的点，可以近似为城市和中间的路。图分为有向图和无向图，可以近似为单向路和双向路。权值就是通过这条路所需的代价，是一个数字。而单源最短路就是两个点之间的最短路径。  而Dijkstra 算法的方法就是先将起点与其他点的举例设为inf,与自己的距离设为0. 再把点分为">
+<meta property="og:description" content="Dijkstra算法的简介和练习">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-08-22T23:40:54.000Z">
-<meta property="article:modified_time" content="2025-08-23T01:56:19.410Z">
+<meta property="article:modified_time" content="2025-09-06T14:41:25.283Z">
 <meta property="article:author" content="light5QAQ">
 <meta property="article:tag" content="Code">
 <meta name="twitter:card" content="summary">
@@ -23,15 +23,15 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1757167829268">
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1757170901460">
 
-<link rel="stylesheet" href="/css/style.css?v=1757167829268">
+<link rel="stylesheet" href="/css/style.css?v=1757170901460">
 
 
 
 
     
-        <link rel="stylesheet" href="/custom.css?v=1757167829268">
+        <link rel="stylesheet" href="/custom.css?v=1757170901461">
     
 
 
@@ -41,7 +41,7 @@
 <script src="/lib/lax.min.js" async></script>
 
 
-<script async src="/js/app.js?v=1757167829268"></script>
+<script async src="/js/app.js?v=1757170901461"></script>
 
  
 
@@ -65,8 +65,8 @@
     </div>
     <div class="nexmoe-count">
         <div><span>文章</span>8</div>
-        <div><span>标签</span>11</div>
-        <div><span>分类</span>5</div>
+        <div><span>标签</span>9</div>
+        <div><span>分类</span>6</div>
     </div>
     <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
         
@@ -226,6 +226,13 @@
         
 
         <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Entertainment/">Entertainment</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
           <a class="category-list-link" href="/categories/Other/">Other</a>
           <span class="category-list-count">1</span>
         </li>
@@ -235,13 +242,6 @@
         <li class="category-list-item">
           <a class="category-list-link" href="/categories/Tech/">Tech</a>
           <span class="category-list-count">2</span>
-        </li>
-
-        
-
-        <li class="category-list-item">
-          <a class="category-list-link" href="/categories/Write-up/">Write-up</a>
-          <span class="category-list-count">1</span>
         </li>
 
         
@@ -256,12 +256,12 @@
         
   <div class="nexmoe-widget-wrap">
     <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
-      <a href="/tags/After-talk/" style="font-size: 10px;">After-talk</a> <a href="/tags/Anime/" style="font-size: 10px;">Anime</a> <a href="/tags/Blog/" style="font-size: 15px;">Blog</a> <a href="/tags/Chat/" style="font-size: 15px;">Chat</a> <a href="/tags/Code/" style="font-size: 10px;">Code</a> <a href="/tags/Help/" style="font-size: 10px;">Help</a> <a href="/tags/Literature/" style="font-size: 15px;">Literature</a> <a href="/tags/PH/" style="font-size: 15px;">PH</a> <a href="/tags/Philosophy/" style="font-size: 20px;">Philosophy</a> <a href="/tags/Theory/" style="font-size: 15px;">Theory</a> <a href="/tags/Theory-Literature/" style="font-size: 10px;">Theory -  Literature</a>
+      <a href="/tags/Anime/" style="font-size: 10px;">Anime</a> <a href="/tags/Code/" style="font-size: 10px;">Code</a> <a href="/tags/Help/" style="font-size: 10px;">Help</a> <a href="/tags/Literature/" style="font-size: 16.67px;">Literature</a> <a href="/tags/Other/" style="font-size: 10px;">Other</a> <a href="/tags/PH/" style="font-size: 13.33px;">PH</a> <a href="/tags/Philosophy/" style="font-size: 20px;">Philosophy</a> <a href="/tags/Theory/" style="font-size: 16.67px;">Theory</a> <a href="/tags/Write-up/" style="font-size: 10px;">Write-up</a>
     </div>
     
       <script>
         var maxTagcloud = parseInt(17);
-        var tags_length = parseInt(11);
+        var tags_length = parseInt(9);
         var tags_arr = [];
         for(var i = 0; i < tags_length; i++){
           tags_arr.push(i);
@@ -357,9 +357,8 @@
         Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
         & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
 	<div style="font-size: 13px">
-            <link rel="stylesheet" href="https://widget.heweather.net/standard/static/css/he-standard.css?v=1.4.0"><script src="https://widget.heweather.net/standard/static/js/he-standard.js?v=1.4.0"></script><script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-            本站总访问量  <a id="busuanzi_value_site_pv"></a> 次<br>
-            本站访客数<a id="busuanzi_value_site_uv"></a>人次
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
    	</div>
         <br><a target="_blank" href="https://beian.miit.gov.cn/">鄂ICP备2020018486号</a>
 <br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral">
@@ -393,7 +392,10 @@
     
 </div>
 
-    <p><strong>Dijkstra 算法</strong>是一种快速，便利地计算非负权图上单源最短路的算法。<br>什么？你问我什么是图？<br>好吧，让我们从头开始。<br>图说白了就是许多连线的点，可以近似为城市和中间的路。图分为有向图和无向图，可以近似为单向路和双向路。权值就是通过这条路所需的代价，是一个数字。而单源最短路就是两个点之间的最短路径。</p>
+    <p>Dijkstra算法的简介和练习</p>
+<span id="more"></span>
+
+<p><strong>Dijkstra 算法</strong>是一种快速，便利地计算非负权图上单源最短路的算法。<br>什么？你问我什么是图？<br>好吧，让我们从头开始。<br>图说白了就是许多连线的点，可以近似为城市和中间的路。图分为有向图和无向图，可以近似为单向路和双向路。权值就是通过这条路所需的代价，是一个数字。而单源最短路就是两个点之间的最短路径。</p>
 <hr>
 <p>而<strong>Dijkstra 算法</strong>的方法就是先将起点与其他点的举例设为inf,与自己的距离设为0. 再把点分为两种,已确定最短路长度的点集S,和未确定最短路长度的点集T. 一开始所有的点都属于T.<br>然后重复这些操作：</p>
 <ol>
@@ -444,7 +446,7 @@
 </div>
   
   
-    <script async src="/js/copy-codeblock.js?v=1757167828904"></script>
+    <script async src="/js/copy-codeblock.js?v=1757170901349"></script>
   
 
   
