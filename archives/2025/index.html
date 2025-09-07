@@ -21,15 +21,15 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1757170901503">
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1757251448221">
 
-<link rel="stylesheet" href="/css/style.css?v=1757170901503">
+<link rel="stylesheet" href="/css/style.css?v=1757251448221">
 
 
 
 
     
-        <link rel="stylesheet" href="/custom.css?v=1757170901504">
+        <link rel="stylesheet" href="/custom.css?v=1757251448221">
     
 
 
@@ -39,7 +39,7 @@
 <script src="/lib/lax.min.js" async></script>
 
 
-<script async src="/js/app.js?v=1757170901504"></script>
+<script async src="/js/app.js?v=1757251448221"></script>
 
  
 
@@ -358,6 +358,19 @@
             <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
    	</div>
+	<p id="hitokoto">
+  	    <a href="#" id="hitokoto_text">:D 获取中...</a>
+	</p>
+	<script>
+ 	    fetch('https://v1.hitokoto.cn')
+             .then(response => response.json())
+             .then(data => {
+    	       const hitokoto = document.querySelector('#hitokoto_text')
+     	       hitokoto.href = `https://hitokoto.cn/?uuid=${data.uuid}`
+               hitokoto.innerText = data.hitokoto
+             })
+             .catch(console.error)
+	</script>
         <br><a target="_blank" href="https://beian.miit.gov.cn/">鄂ICP备2020018486号</a>
 <br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral">
 <img src="https://i.dawnlab.me/c0268c1e6cfd0863d6ba35be1575941a.png" width="150px"></a>
