@@ -1,0 +1,915 @@
+<!doctype html>
+<html lang="zh"><head>
+<title>2025CSP-J初赛试题解析 - light的赛博小窝</title>
+<meta charset="UTF-8">
+<meta name="keywords" content="博客">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<meta name="description" content="J和S的复赛没考好，已经被上善若水和人杰地灵折磨疯了，写个初赛题解放松下吧。  2025 CCF 非专业级别软件能力认证第一轮（CSP-J1）入门级C++语言试题  考生注意事项：   试题共有9页，答题纸共有1页，满分100分。请在答题纸上作答，写在试题纸上的一律无效。   不得使用任何电子设备（如计算器、手机、电子词典、电子手表等）或查阅任何书籍资料。    一、单项选择题（共15题，每题2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2025CSP-J初赛试题解析">
+<meta property="og:url" content="https://light5qaq.github.io/2025/11/08/2025CSP-J%E5%88%9D%E8%B5%9B%E8%AF%95%E9%A2%98%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:site_name" content="light的赛博小窝">
+<meta property="og:description" content="J和S的复赛没考好，已经被上善若水和人杰地灵折磨疯了，写个初赛题解放松下吧。  2025 CCF 非专业级别软件能力认证第一轮（CSP-J1）入门级C++语言试题  考生注意事项：   试题共有9页，答题纸共有1页，满分100分。请在答题纸上作答，写在试题纸上的一律无效。   不得使用任何电子设备（如计算器、手机、电子词典、电子手表等）或查阅任何书籍资料。    一、单项选择题（共15题，每题2">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-11-08T11:37:07.000Z">
+<meta property="article:modified_time" content="2025-11-08T12:47:08.601Z">
+<meta property="article:author" content="light5QAQ">
+<meta property="article:tag" content="博客">
+<meta name="twitter:card" content="summary">
+
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1762606226442">
+
+<link rel="stylesheet" href="/css/style.css?v=1762606226442">
+
+
+
+
+    
+        <link rel="stylesheet" href="/custom.css?v=1762606226442">
+    
+
+
+
+<script src="/lib/mdui_043tiny/mdui.js" async></script>
+<script src="/lib/fancybox/fancybox.umd.js" async></script>
+<script src="/lib/lax.min.js" async></script>
+
+
+<script async src="/js/app.js?v=1762606226442"></script>
+
+ 
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4D4ZJ9G024"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+
+  gtag("config", "G-4D4ZJ9G024");
+</script>
+
+
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
+/>
+<meta name="generator" content="Hexo 7.3.0"></head><body class="nexmoe mdui-drawer-body-left"><div id="nexmoe-background"><div class="nexmoe-bg" style="background-image: url(https://img-baofun.zhhainiao.com/fs/7e3b72744eed5f25a64ba45b355c4838.jpg)"></div><div class="mdui-appbar mdui-shadow-0"><div class="mdui-toolbar"><a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: &#039;#drawer&#039;, swipe: true}" title="menu"><i class="mdui-icon nexmoefont icon-menu"></i></a><div class="mdui-toolbar-spacer"></div><a class="mdui-btn mdui-btn-icon" href="/" title="light5QAQ"><img src="https://ts4.tc.mm.bing.net/th/id/OIP-C.gjakIQWnviPIy3efnqpBUwHaG1?rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3" alt="light5QAQ"></a></div></div></div><div id="nexmoe-header"><div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="light5QAQ">
+            <img src="https://ts4.tc.mm.bing.net/th/id/OIP-C.gjakIQWnviPIy3efnqpBUwHaG1?rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3" alt="light5QAQ" alt="light5QAQ">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>9</div>
+        <div><span>标签</span>9</div>
+        <div><span>分类</span>6</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/file.html" title="文件下载">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                文件下载
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/secret.html" title="我的私密库">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的私密库
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/donate.html" title="给我赞助">
+            <i class="mdui-list-item-icon nexmoefont icon-coffee"></i>
+            <div class="mdui-list-item-content">
+                给我赞助
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" target="_blank" rel="noopener" href="https://i.nexmoe.com/" title="关于博主">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博主
+            </div>
+        </a>
+        
+    </div>
+    
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
+</div>
+
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://qun.qq.com/universal-share/share?ac=1&authKey=ba1tDTzORoRik1RqXRcnUelcuyWhMBJb2wHNpmB4h5zmNzD%2Bdezf0b33TnateSuV&busi_data=eyJncm91cENvZGUiOiIxMDIxMDgxNjQ5IiwidG9rZW4iOiJLd3RDY3pCU0k1dnpHRzBTclNmeEVXMGZLVlR6L1B0ZURMNDlzK0JYV282UENVaExqWnQ4WlIxdEE3QlhUZHg2IiwidWluIjoiMTE2MjkyMDM3MSJ9&data=wbYH-67H2R7aXKWocMq6gZRpnwi288wcOZkgIolPqlyjJpWnC0CHygDXsofQXoy_b-YeLM9OcQKCsNutjB5HZQ&svctype=4&tempid=h5_group_info"
+			target="_blank"
+			mdui-tooltip="{content: 'QQ群'}"
+			style="
+				color: rgb(249, 174, 8);
+				background-color: rgba(249, 174, 8, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-QQ"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://space.bilibili.com/547821271"
+			target="_blank"
+			mdui-tooltip="{content: '哔哩哔哩'}"
+			style="
+				color: rgb(231, 106, 141);
+				background-color: rgba(231, 106, 141, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-bilibili"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/light5QAQ/"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.zhihu.com/people/light-97-4-7"
+			target="_blank"
+			mdui-tooltip="{content: '知乎'}"
+			style="
+				color: rgb(30, 136, 229);
+				background-color: rgba(30, 136, 229, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-zhihu"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.luogu.com.cn/user/565142"
+			target="_blank"
+			mdui-tooltip="{content: '洛谷'}"
+			style="
+				color: rgb(247, 132, 34);
+				background-color: rgba(247, 132, 34, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-rss"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Artwork/">Artwork</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Chat/">Chat</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Entertainment/">Entertainment</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Other/">Other</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Tech/">Tech</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/Anime/" style="font-size: 10px;">Anime</a> <a href="/tags/Code/" style="font-size: 10px;">Code</a> <a href="/tags/Help/" style="font-size: 10px;">Help</a> <a href="/tags/Literature/" style="font-size: 20px;">Literature</a> <a href="/tags/Other/" style="font-size: 15px;">Other</a> <a href="/tags/PH/" style="font-size: 15px;">PH</a> <a href="/tags/Philosophy/" style="font-size: 20px;">Philosophy</a> <a href="/tags/Theory/" style="font-size: 15px;">Theory</a> <a href="/tags/Write-up/" style="font-size: 10px;">Write-up</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(9);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+    
+        
+        <!-- 一言 -->
+<div class="nexmoe-widget-wrap">
+  <h3 class="nexmoe-widget-title">
+    一言
+  </h3>
+  <div class="nexmoe-widget">
+    <ul class="hitokoto-box">
+      <li id="hitokoto_text_parent" class="hitokoto-text" hitokotoCategory="">
+        <a href="#" id="hitokoto_text">
+          
+        </a>
+        <a href="#" id="hitokoto_error_text" style="display: none;">
+          
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  let hitokotoText = document.getElementById('hitokoto_text')
+  let hitokotoErroText = document.getElementById('hitokoto_error_text')
+  let hitokotoCategory = document.getElementById('hitokoto_text_parent').getAttribute('hitokotoCategory')
+  window.addEventListener('load', function () {
+    let url = 'https://v1.hitokoto.cn'
+    if (hitokotoCategory) {
+      url += '?c=' + hitokotoCategory
+    }
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        hitokotoText.innerText = "「 " + data.hitokoto + " 」 from " + data.from
+        hitokotoText.href = 'https://hitokoto.cn/?uuid=' + data.uuid
+      })
+      .catch((reason) => {
+        console.error(11, reason)
+        hitokotoText.style.display = 'none'
+        hitokotoErroText.style.display = 'block'
+      })
+  })
+</script>
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/">2025</a><span class="archive-list-count">9</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/11/08/2025CSP-J%E5%88%9D%E8%B5%9B%E8%AF%95%E9%A2%98%E8%A7%A3%E6%9E%90/">2025CSP-J初赛试题解析</a>
+          </li>
+        
+          <li>
+            <a href="/2025/10/05/%E4%B8%AD%E4%BA%8C%E7%97%85%E3%81%A7%E3%82%82%E6%81%8B%E3%81%8C%E3%81%97%E3%81%9F%E3%81%84%EF%BC%81%E4%B8%AD%E5%9B%B4%E7%BB%95%E4%B8%AD%E4%BA%8C%E7%97%85%E5%8F%91%E5%B1%95%E7%9A%84%E7%AC%A6%E5%8F%B7%E5%8C%96%E6%80%9D%E8%80%83/">中二病でも恋がしたい！中围绕中二病发展的符号化思考</a>
+          </li>
+        
+          <li>
+            <a href="/2025/09/13/%E6%82%BC%E8%87%AA%E5%8A%A8%E9%93%85/">悼自动铅</a>
+          </li>
+        
+          <li>
+            <a href="/2025/09/06/%E4%B8%96%E4%B8%8A%E6%9C%80%E7%BE%8E%E7%9A%84%E8%A7%A3%E8%B0%9C%E8%80%85/">世上最美的解谜者</a>
+          </li>
+        
+          <li>
+            <a href="/2025/08/30/Golden-PH-write-up/">Golden PH write-up</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-link">
+		<ul>
+        
+            <li>
+                <a href="https://lab.magiconch.com/" target="_blank" >
+                    <img src="https://t.magiconch.com/static/img/avatar.jpg" alt="神奇海螺试验场by卜卜口"></img>
+                    <p>神奇海螺试验场by卜卜口</p>
+                </a>
+            </li>
+        
+		</ul>
+    </div>
+</div>
+<style>
+.nexmoe-widget-wrap .nexmoe-link ul li a {
+    text-align : center;
+}
+.nexmoe-widget-wrap .nexmoe-link ul li a img {
+    max-width : 100%;
+}
+.nexmoe-widget-wrap .nexmoe-link ul li a p {
+    margin: 10px 0;
+}
+</style>
+
+    
+   
+    <div class="nexmoe-copyright">
+        &copy; 2025 light5QAQ
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+	<div style="font-size: 13px">
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+   	</div>
+	<script>
+ 	    fetch('https://v1.hitokoto.cn')
+             .then(response => response.json())
+             .then(data => {
+    	       const hitokoto = document.querySelector('#hitokoto_text')
+     	       hitokoto.href = `https://hitokoto.cn/?uuid=${data.uuid}`
+               hitokoto.innerText = data.hitokoto
+             })
+             .catch(console.error)
+	</script>
+        <br><a target="_blank" href="https://beian.miit.gov.cn/">鄂ICP备2020018486号</a>
+<br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral">
+<img src="https://i.dawnlab.me/c0268c1e6cfd0863d6ba35be1575941a.png" width="150px"></a>
+
+    </div>
+</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><div class="nexmoe-post">
+  <article>
+    
+        <div class="nexmoe-post-cover"> 
+            <img src="https://img-baofun.zhhainiao.com/fs/7e3b72744eed5f25a64ba45b355c4838.jpg" alt="2025CSP-J初赛试题解析" loading="lazy">
+            <h1>2025CSP-J初赛试题解析</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2025年11月08日</a>
+        
+        
+    <a><i class="nexmoefont icon-areachart"></i>约3.9k字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要17分钟</a>
+
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <blockquote>
+<p>J和S的复赛没考好，已经被上善若水和人杰地灵折磨疯了，写个初赛题解放松下吧。</p>
+</blockquote>
+<h2 id="2025-CCF-非专业级别软件能力认证第一轮（CSP-J1）入门级C-语言试题">2025 CCF 非专业级别软件能力认证第一轮（CSP-J1）入门级C++语言试题</h2>
+<hr>
+<p><strong>考生注意事项：</strong></p>
+<ol>
+<li class="lvl-3">
+<p>试题共有9页，答题纸共有1页，满分100分。请在答题纸上作答，写在试题纸上的一律无效。</p>
+</li>
+<li class="lvl-3">
+<p>不得使用任何电子设备（如计算器、手机、电子词典、电子手表等）或查阅任何书籍资料。</p>
+</li>
+</ol>
+<hr>
+<h3 id="一、单项选择题（共15题，每题2分，共计30分；每题有且仅有一个正确选项）">一、单项选择题（共15题，每题2分，共计30分；每题有且仅有一个正确选项）</h3>
+<p><mark>1.</mark> 一个32位无符号整数可以表示的最大值，最接近下列哪个选项？（）<br>
+A. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mo>×</mo><msup><mn>10</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">4\times10^9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span><br>
+B. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>×</mo><msup><mn>10</mn><mn>10</mn></msup></mrow><annotation encoding="application/x-tex">3\times10^{10}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">10</span></span></span></span></span></span></span></span></span></span></span></span><br>
+C. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>×</mo><msup><mn>10</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">2\times10^9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span><br>
+D. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>×</mo><msup><mn>10</mn><mn>10</mn></msup></mrow><annotation encoding="application/x-tex">2\times10^{10}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">10</span></span></span></span></span></span></span></span></span></span></span></span><br>
+<em>答案：</em> A<br>
+<em>解析：</em> 32位无符号整数可以表示的最大值为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>32</mn></msup><mo>−</mo><mn>1</mn><mo>=</mo><mn>4294967295</mn><mo>≈</mo><mn>4</mn><mo>×</mo><msup><mn>10</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">2^{32}-1=4294967295\approx4\times10^9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">32</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4294967295</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span></p>
+<p><mark>2.</mark> 在C++中，执行<code>int x=255; cout&lt;&lt;(x&amp;(x-1));</code>后，输出的结果是？（）<br>
+A. 255<br>
+B. 254<br>
+C. 128<br>
+D. 0<br>
+<em>答案：</em> B<br>
+<em>解析：</em> 即11111111 &amp; 11111110=254</p>
+<p><mark>3.</mark> 函数calc(n)的定义如下，则calc(5)的返回值是多少？（）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">calc</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span></span>&#123; <br>    <span class="hljs-keyword">if</span>(n&lt;=<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>; <br>    <span class="hljs-keyword">if</span>(n%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-built_in">calc</span>(n/<span class="hljs-number">2</span>)<span class="hljs-number">+1</span>;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-built_in">calc</span>(n<span class="hljs-number">-1</span>)+<span class="hljs-built_in">calc</span>(n<span class="hljs-number">-2</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>A. 5<br>
+B. 6<br>
+C. 7<br>
+D. 8<br>
+<em>答案：</em> B<br>
+<em>解析：</em> cals(5)=cals(4)+cals(3)=cals(2)+1+cals(2)+cals(1)=cals(1)+1+1+cals(1)+1+1=1+1+1+1+1+1=6</p>
+<p>==4. == 用5个权值10、12、15、20、25构造哈夫曼树，该树的带权路径长度是多少？（）<br>
+A. 176<br>
+B. 186<br>
+C. 196<br>
+D. 206<br>
+<em>答案：</em> B<br>
+<em>解析：</em> 构造哈夫曼树步骤：合并10和12，得22。合并15和20，得35。合并22和25，得47。合并35和47，得82。计算带权路径长度即可。</p>
+<p><mark>5.</mark> 在一个有向图中，所有顶点的入度之和等于所有顶点的出度之和，这个总和等于？（）<br>
+A. 顶点数<br>
+B. 边数<br>
+C. 顶点数+边数<br>
+D. 顶点数×2<br>
+<em>答案：</em> B<br>
+<em>解析：</em> 一条边贡献一个出度一个入度，因此选择边数，理解不上来画个图就好了。</p>
+<p><mark>6.</mark> 从5位男生和4位女生中选出4人组成一个学习小组，要求学习小组中男生和女生都有。有多少种不同的选举方法？（）<br>
+A. 126<br>
+B. 121<br>
+C. 120<br>
+D. 100<br>
+<em>答案：</em> C<br>
+<em>解析：</em> 全部-全男-全女，即<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>C</mi><mn>4</mn><mn>9</mn></msubsup><mo>−</mo><msubsup><mi>C</mi><mn>4</mn><mn>5</mn></msubsup><mo>−</mo><msubsup><mi>C</mi><mn>4</mn><mn>4</mn></msubsup><mo>=</mo><mn>126</mn><mo>−</mo><mn>5</mn><mo>−</mo><mn>1</mn><mo>=</mo><mn>120</mn></mrow><annotation encoding="application/x-tex"> C^9_4-C^5_4-C^4_4=126-5-1=120</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0622em;vertical-align:-0.2481em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-2.4519em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2481em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0622em;vertical-align:-0.2481em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-2.4519em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2481em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0622em;vertical-align:-0.2481em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-2.4519em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2481em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">126</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">120</span></span></span></span></p>
+<p><mark>7.</mark> 假设a、b、c都是布尔变量，逻辑表达式(a&amp;&amp;b)||(!c&amp;&amp;a)的值与下列哪个表达式不始终相等？（）<br>
+A. a&amp;&amp;(b||!c)<br>
+B. (a||!c)&amp;&amp;(b||!c)&amp;&amp;(a||a)<br>
+C. a&amp;&amp;(!b||c)<br>
+D. !(a||!b)||(a&amp;&amp;!c)<br>
+<em>答案：</em> C<br>
+<em>解析：</em> 没啥说的，挨个试。</p>
+<p><mark>8.</mark> 已知f[0]=1，并且对于所有有f[n]=(f[n-1]+f[n-2])%7，那么f[2025]的值是多少？（）<br>
+A. 2<br>
+B. 4<br>
+C. 5<br>
+D. 6<br>
+<em>答案：</em> D<br>
+<em>解析：</em> 先递推，发现出现周期为十六的1 1 2 3 5 1 6 0 6 6 5 4 2 6 1 0数列(考场上真是吓我一跳)，2025%16=9，D</p>
+<p><mark>9.</mark> 下列关于C++ string类的说法，正确的是？（）<br>
+A. string对象的长度在创建后不能改变。<br>
+B. 可以使用+运算符直接连接一个string对象和一个char类型的字符。<br>
+C. string的length()和size()方法返回的值可能不同。<br>
+D. string对象必须以\0结尾，且这个结尾符计入length()。<em>答案：</em> B<br>
+<em>解析：</em> A：加号就可以改变了；B：没毛病；C：一模一样；D：不用加\0，更不计入length()了。(话说这四个选项如果不确定都可以看阅读程序题进行验证)</p>
+<p><mark>10.</mark> 考虑以下C++函数，在main函数调用solve后，x和y的值分别是？（）<br>
+A. 5，10<br>
+B. 10，5<br>
+C. 10，10<br>
+D. 5，5</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-type">int</span> &amp;a, <span class="hljs-type">int</span> b)</span></span>&#123;<br>    a = a + b;<br>    b = a - b;<br>    a = a - b;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123; <br>    <span class="hljs-type">int</span> x=<span class="hljs-number">5</span>, y=<span class="hljs-number">10</span>;<br>    <span class="hljs-built_in">solve</span>(x, y);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>A. 5，10<br>
+B. 10，5<br>
+C. 10，10<br>
+D. 5，5<br>
+<em>答案：</em> D<br>
+<em>解析：</em> 注意&amp;a影响实际值，b不影响。推一下就好啦。</p>
+<p><mark>11.</mark> 一个8×8的棋盘，左上角坐标为(1,1)，右下角为(8,8)。一个机器人从(1,1)出发，每次只能向右或向下走一格。要到达(4,5)，有多少种不同的路径？（）<br>
+A. 20<br>
+B. 35<br>
+C. 56<br>
+D. 70<br>
+<em>答案：</em> B<br>
+<em>解析：</em> dp推一下就好了，f[i][j]=f[i-1][j]+f[i][j-1]</p>
+<p><mark>12.</mark> 某同学用冒泡排序对数组[6,1,5,2,4]进行升序排序，请问需要进行多少次元素交换？（）<br>
+A. 5<br>
+B. 6<br>
+C. 7<br>
+D. 8<br>
+<em>答案：</em> B<br>
+<em>解析：</em> 冒泡排序就是两两交换，捋几遍就知道了。</p>
+<p><mark>13.</mark> 十进制数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mn>720</mn><mn>10</mn></msub></mrow><annotation encoding="application/x-tex">720_{10}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7944em;vertical-align:-0.15em;"></span><span class="mord">72</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">10</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>和八进制数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mn>270</mn><mn>8</mn></msub></mrow><annotation encoding="application/x-tex">270_8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7944em;vertical-align:-0.15em;"></span><span class="mord">27</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>（原题此处缺失）的和用十六进制表示是多少？（）<br>
+A. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mn>388</mn><mn>16</mn></msub></mrow><annotation encoding="application/x-tex">388_{16}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7944em;vertical-align:-0.15em;"></span><span class="mord">38</span><span class="mord"><span class="mord">8</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">16</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><br>
+B. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>D</mi><msub><mi>E</mi><mn>16</mn></msub></mrow><annotation encoding="application/x-tex">3DE_{16}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord">3</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">16</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><br>
+C. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mn>288</mn><mn>16</mn></msub></mrow><annotation encoding="application/x-tex">288_{16}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7944em;vertical-align:-0.15em;"></span><span class="mord">28</span><span class="mord"><span class="mord">8</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">16</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><br>
+D. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mn>990</mn><mn>16</mn></msub></mrow><annotation encoding="application/x-tex">990_{16}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7944em;vertical-align:-0.15em;"></span><span class="mord">99</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">16</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><br>
+<em>答案：</em> A<br>
+<em>解析：</em> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mn>720</mn><mn>10</mn></msub><mo>+</mo><msub><mn>270</mn><mn>8</mn></msub><mo>=</mo><msub><mn>720</mn><mn>10</mn></msub><mo>+</mo><msub><mn>184</mn><mn>10</mn></msub><mo>=</mo><msub><mn>904</mn><mn>10</mn></msub><mo>=</mo><msub><mn>388</mn><mn>16</mn></msub></mrow><annotation encoding="application/x-tex">720_{10}+270_8=720_{10}+184_{10}=904_{10}=388_{16}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7944em;vertical-align:-0.15em;"></span><span class="mord">72</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">10</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7944em;vertical-align:-0.15em;"></span><span class="mord">27</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7944em;vertical-align:-0.15em;"></span><span class="mord">72</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">10</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7944em;vertical-align:-0.15em;"></span><span class="mord">18</span><span class="mord"><span class="mord">4</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">10</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7944em;vertical-align:-0.15em;"></span><span class="mord">90</span><span class="mord"><span class="mord">4</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">10</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7944em;vertical-align:-0.15em;"></span><span class="mord">38</span><span class="mord"><span class="mord">8</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">16</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></p>
+<p><mark>14.</mark> 一棵包含1000个结点的完全二叉树，其叶子结点的数量是多少？（）<br>
+A. 499<br>
+B. 512<br>
+C. 500<br>
+D. 501<br>
+<em>答案：</em> C<br>
+<em>解析：</em> 如果记不住公式大致推一下当作规律题做就好了，然而公式是<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mrow><mi>l</mi><mi>e</mi><mi>a</mi><mi>v</mi><mi>e</mi><mi>s</mi></mrow></msub><mo>=</mo><mo stretchy="false">⌈</mo><msub><mi>n</mi><mrow><mi>t</mi><mi>o</mi><mi>t</mi></mrow></msub><mi mathvariant="normal">/</mi><mn>2</mn><mo stretchy="false">⌉</mo><mo stretchy="false">(</mo><msub><mi>n</mi><mrow><mi>t</mi><mi>o</mi><mi>t</mi></mrow></msub><mi mathvariant="normal">%</mi><mn>2</mn><mo>=</mo><mo>=</mo><mn>1</mn><mo stretchy="false">)</mo><msub><mi>n</mi><mrow><mi>l</mi><mi>e</mi><mi>a</mi><mi>v</mi><mi>e</mi><mi>s</mi></mrow></msub><mo>=</mo><msub><mi>n</mi><mrow><mi>t</mi><mi>o</mi><mi>t</mi></mrow></msub><mi mathvariant="normal">/</mi><mn>2</mn><mo stretchy="false">(</mo><msub><mi>n</mi><mrow><mi>t</mi><mi>o</mi><mi>t</mi></mrow></msub><mi mathvariant="normal">%</mi><mn>2</mn><mo>=</mo><mo>=</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">n_{leaves}=\lceil n_{tot} /2 \rceil (n_{tot} \%2==1) n_{leaves}=n_{tot}/2(n_{tot}\%2==0)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span><span class="mord mathnormal mtight">es</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌈</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">/2</span><span class="mclose">⌉</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">%2</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">==</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span><span class="mord mathnormal mtight">es</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">/2</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">%2</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">==</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mclose">)</span></span></span></span></p>
+<p><mark>15.</mark> 给定一个初始为空的整数栈S和一个空的队列P。按顺序处理输入的整数队列A：7、5、8、3、1、4、2。处理规则：①若该数是奇数，压入栈S；②若该数是偶数且栈S非空，弹出栈顶元素加入队列P；③若该数是偶数且栈S为空，不操作。当队列A处理完毕后，队列P的内容是什么？（）<br>
+A. 5，1，3<br>
+B. 7，5，3<br>
+C. 3，1，5<br>
+D. 5，1，3，7<br>
+<em>答案：</em> A<br>
+<em>解析：</em> 模拟一下就好，队列先进先出，栈先进后出。</p>
+<hr>
+<h3 id="二、阅读程序（程序输入不超过数组或字符串定义的范围；">二、阅读程序（程序输入不超过数组或字符串定义的范围；</h3>
+<p>判断题正确填√，错误填×；除特殊说明外，判断题1.5分，选择题3分，共计40分）</p>
+<h4 id="1">(1)</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstdio&gt;</span> </span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstring&gt;</span> </span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;algorithm&gt;</span></span><br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">gcd</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span></span>&#123; <br>   <span class="hljs-keyword">if</span>(b==<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> a;<br>   <span class="hljs-keyword">return</span> <span class="hljs-built_in">gcd</span>(b, a%b);<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123; <br>   <span class="hljs-type">int</span> n;<br>   <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;n);<br>   <span class="hljs-type">int</span> ans=<span class="hljs-number">0</span>; <br>   <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; ++i)&#123; <br>       <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=i<span class="hljs-number">+1</span>; j&lt;=n; ++j)&#123; <br>           <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> k=j<span class="hljs-number">+1</span>; k&lt;=n; ++k)&#123;<br>               <span class="hljs-keyword">if</span>(<span class="hljs-built_in">gcd</span>(i,j)==<span class="hljs-number">1</span> &amp;&amp; <span class="hljs-built_in">gcd</span>(j,k)==<span class="hljs-number">1</span> &amp;&amp; <span class="hljs-built_in">gcd</span>(i,k)==<span class="hljs-number">1</span>)&#123;<br>                   ++ans;<br>               &#125;<br>           &#125;<br>       &#125;<br>   &#125;<br>   <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, ans);<br>   <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h5 id="判断题">判断题</h5>
+<p><mark>16.</mark> （1分）当输入为2时，程序并不会执行第16行的判断语句。（）</p>
+<p><mark>17.</mark> 将第16行中的<code>&amp;&amp; gcd(i, k)==1</code>删去不会影响程序运行结果。（）</p>
+<p><mark>18.</mark> 当输入的的时候，程序总是输出一个正整数。（）</p>
+<h5 id="单选题">单选题</h5>
+<p><mark>19.</mark> 将第7行的<code>gcd(b,a%b)</code>改为<code>gcd(a,a%b)</code>后，程序可能出现的问题是（）。<br>
+A. 输出的答案大于原答案。<br>
+B. 输出的答案小于原答案。<br>
+C. 程序有可能陷入死循环。<br>
+D. 可能发生整型溢出问题。</p>
+<p><mark>20.</mark> 当输入为8的时候，输出为（）。<br>
+A. 37<br>
+B. 42<br>
+C. 35<br>
+D. 25</p>
+<p><mark>21.</mark> 调用<code>gcd(36,42)</code>会返回（）。<br>
+A. 6<br>
+B. 252<br>
+C. 3<br>
+D. 2</p>
+<p><em>答案：</em> √×√CCA<br>
+<em>解析：</em></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>程序大意：寻找1-n中互质的三元组</p>
+</li>
+<li class="lvl-2">
+<p>16：i=2时j=3，循环都不会执行，别说判断了</p>
+</li>
+<li class="lvl-2">
+<p>17：不满足两两互质，必然不成立，例如4 5 16就不一样</p>
+</li>
+<li class="lvl-2">
+<p>18：注意到1 2 3满足要求，输出必然大于等于1</p>
+</li>
+<li class="lvl-2">
+<p>19：若a=a%b，在极端情况下会死循环</p>
+</li>
+<li class="lvl-2">
+<p>20：根据题意模拟即可</p>
+</li>
+<li class="lvl-2">
+<p>21: gcd(Greatest Common Divisor)意为最大公约数，36和42的最大公约数为6。</p>
+</li>
+</ul>
+<h4 id="2">(2)</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;algorithm&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstdio&gt;</span> </span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstring&gt;</span> </span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> ll long long </span><br><span class="hljs-type">int</span> n, k; <br><span class="hljs-type">int</span> a[<span class="hljs-number">20000</span>];<br><span class="hljs-type">int</span> ans[<span class="hljs-number">20007</span>]; <br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123; <br>   <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;n, &amp;k);<br>   <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; ++i)&#123; <br>       <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;a[i]);<br>   &#125;<br>   std::<span class="hljs-built_in">sort</span>(a<span class="hljs-number">+1</span>, a+n<span class="hljs-number">+1</span>); <br>   n = std::<span class="hljs-built_in">unique</span>(a<span class="hljs-number">+1</span>, a+n<span class="hljs-number">+1</span>) - a - <span class="hljs-number">1</span>; <br>   <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>, j=<span class="hljs-number">0</span>; i&lt;=n; ++i)&#123;<br>       <span class="hljs-keyword">for</span>(; j&lt;i &amp;&amp; a[i]-a[j<span class="hljs-number">+1</span>]&gt;k; ++j);<br>       ans[i] = ans[j] + <span class="hljs-number">1</span>;<br>   &#125;<br>   <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, ans[n]);<br>   <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h5 id="判断题-2">判断题</h5>
+<p><mark>22.</mark> 当输入为“3 1 3 2 1”时，输出结果为2。（）</p>
+<p><mark>23.</mark> 假设输入的n为正整数，输出的答案一定小于等于n，大于等于1。（）</p>
+<p><mark>24.</mark> 将第14行的<code>n=std::unique(a+1,a+n+1)-a-1;</code>删去后，有可能出现与原本代码不同的输出结果。（）</p>
+<h5 id="单选题-2">单选题</h5>
+<p><mark>25.</mark> 假设输入的a数组和k均为正整数，执行第18行代码时，一定满足的条件不包括（）。<br>
+A. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>≤</mo><mi>i</mi></mrow><annotation encoding="application/x-tex">j\le i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span><br>
+B. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>−</mo><mi>a</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo>&gt;</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">a[i]-a[j]&gt;k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span><br>
+C. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>≤</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">j\le n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span><br>
+D. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo>&lt;</mo><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">a[j]&lt;a[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span></p>
+<p><mark>26.</mark> 当输入的n=100、k=2、a={1,2,…,100}时，输出为（）。<br>
+A. 34<br>
+B. 100<br>
+C. 50<br>
+D. 33</p>
+<p><mark>27.</mark> 假设输入的a数组和k均为正整数，但a数组不一定有序，若误删去第13行的<code>std::sort(a+1,a+n+1);</code>，程序有可能出现的问题有（）。<br>
+A. 输出的答案比原本答案更大<br>
+B. 输出的答案比原本答案更小<br>
+C. 出现死循环行为<br>
+D. 以上均可能发生</p>
+<p><em>答案：</em> ×√√BAD<br>
+<em>解析：</em></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>程序大意：将数组分组，使每组数据差≤k，输出组数</p>
+</li>
+<li class="lvl-2">
+<p>22：数组为1、2、3，输出3</p>
+</li>
+<li class="lvl-2">
+<p>23：每组一个时为n，最少显然为1</p>
+</li>
+<li class="lvl-2">
+<p>24：unique用来去重，去重输出2，不去重输出1</p>
+</li>
+<li class="lvl-2">
+<p>25：a[i]-a[j]≤k</p>
+</li>
+<li class="lvl-2">
+<p>26：根据题意模拟即可-&gt;34</p>
+</li>
+<li class="lvl-2">
+<p>27: 删去后无法排序，均可能发生</p>
+</li>
+</ul>
+<h4 id="3">(3)</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;algorithm&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstdio&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstring&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> ll long long</span><br><span class="hljs-type">int</span> f[<span class="hljs-number">5007</span>][<span class="hljs-number">5007</span>];<br><span class="hljs-type">int</span> a[<span class="hljs-number">5007</span>], b[<span class="hljs-number">5007</span>]; <br><span class="hljs-type">int</span> n;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123; <br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;n); <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; ++i)&#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;a[i]);<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; ++i)&#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;b[i]);<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; ++i)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>; j&lt;=n; ++j)&#123; <br>            f[i][j] = std::<span class="hljs-built_in">max</span>(f[i<span class="hljs-number">-1</span>][j], f[i][j<span class="hljs-number">-1</span>]);<br>            <span class="hljs-keyword">if</span>(a[i]==b[j])&#123; <br>                f[i][j] = std::<span class="hljs-built_in">max</span>(f[i][j], f[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>]<span class="hljs-number">+1</span>);<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, f[n][n]); <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h5 id="判断题-3">判断题</h5>
+<p><mark>28.</mark> 当输入“4 1 2 3 4 1 3 2 2”时，输出为2。（）</p>
+<p><mark>29.</mark> 当程序运行完毕后，对于所有的，都一定有。（）</p>
+<p><mark>30.</mark> 将第18行的<code>f[i][j]=std::max(f[i][j],std::max(f[i-1][j],f[i][j-1]));</code>删去后，并不影响程序运行结果。（）</p>
+<h5 id="选择题">选择题</h5>
+<p><mark>31.</mark> 输出的答案满足的性质有（）。<br>
+A. 小于等于n<br>
+B. 大于等于0<br>
+C. 不一定大于等于1<br>
+D. 以上均是</p>
+<p><mark>32.</mark> 如果在16行的循环前加上以下两行：<code>std::sort(a+1,a+n+1); std::sort(b+1,b+n+1)</code>，则答案会（）。<br>
+A. 变大或不变<br>
+B. 变小或不变<br>
+C. 一定变大<br>
+D. 不变</p>
+<p><mark>33.</mark> (此题原本删除)如果输入的a数组是<code>1,2,...,n</code>，而且b数组中数字均为1~n中的正整数，则上述代码等价于下面哪个问题：（）。<br>
+A. 求b数组去重后的长度<br>
+B. 求b数组的最长上升子序列<br>
+C. 求b数组的长度<br>
+D. 求b数组的最大值</p>
+<p><em>答案：</em> √√×DAB<br>
+<em>解析：</em></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>程序大意：LCS问题，即最长公共子序列问题</p>
+</li>
+<li class="lvl-2">
+<p>28：LCS为1、2或1、3，长度为2</p>
+</li>
+<li class="lvl-2">
+<p>29：a[i][j]表示前i个a和前j个b的LCS长度，f[n][n]为最大值，必小于。</p>
+</li>
+<li class="lvl-2">
+<p>30：删去会导致为0</p>
+</li>
+<li class="lvl-2">
+<p>31：理解题意即可</p>
+</li>
+<li class="lvl-2">
+<p>32：排序后题意更换为最长公共元素个数，大于或等于</p>
+</li>
+<li class="lvl-2">
+<p>33: 题意，相当于给没理解题目的人一个提示了</p>
+</li>
+</ul>
+<h3 id="三、完善程序（单选题，每小题3分，共计30分）">三、完善程序（单选题，每小题3分，共计30分）</h3>
+<h4 id="（1）字符串解码">（1）字符串解码</h4>
+<p>“行程长度编码”（Run-Length Encoding）是一种无损压缩算法，常用于压缩重复字符较多的数据，以减少存储空间。假设原始字符串不包含数字字符，压缩规则如下：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>①如果原始字符串中一个字符连续出现N次（），在压缩字符串中表示为“字符+数字N”。例如，编码“A12”代表12个连续的字符A。</p>
+</li>
+<li class="lvl-2">
+<p>②如果原始字符串中一个字符只出现1次，在压缩字符串中表示为该字符本身。例如，编码“B”代表1个字符B。</p>
+</li>
+</ul>
+<p>以下程序实现读取压缩字符串并输出其原始的、解压后的形式，试补全程序。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cctype&gt;</span> </span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    string z; <br>    cin &gt;&gt; z; <br>    string s = <span class="hljs-string">&quot;&quot;</span>; <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; ①; )&#123; <br>        <span class="hljs-type">char</span> ch = z[i];<br>        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">isdigit</span>(z[i<span class="hljs-number">+1</span>]))&#123;<br>            <span class="hljs-type">int</span> count=<span class="hljs-number">0</span>; <br>            i++;<br>            <span class="hljs-keyword">while</span> (i&lt;z.<span class="hljs-built_in">length</span>() &amp;&amp; <span class="hljs-built_in">isdigit</span>(z[i]))&#123;<br>                count = ②; <br>                i++;<br>            &#125;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>; j&lt;③; ++j)&#123;<br>                s += ch;<br>            &#125;<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            s += ④;<br>            ⑤;<br>        &#125;<br>    &#125;<br>    cout &lt;&lt; s &lt;&lt; endl; <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><mark>33.</mark> ①处应填（）<br>
+A. i＜z.length()<br>
+B. i-1≥0<br>
+C. i+1＜z.length()<br>
+D. <code>isdigit(z[i])</code></p>
+<p><mark>34.</mark> ②处应填（）<br>
+A. <code>count + (z[i]-'0')</code><br>
+B. <code>count * 10 + (z[i]-'0')</code><br>
+C. <code>z[i]-'0'</code><br>
+D. <code>count+1</code></p>
+<p><mark>35.</mark> ③处应填（）<br>
+A. <code>count-1</code><br>
+B. <code>count</code><br>
+C. 10<br>
+D. <code>z[i]-'8'</code></p>
+<p><mark>36.</mark> ④处应填（）<br>
+A. <code>z[i+1]</code><br>
+B. <code>ch</code><br>
+C. <code>z.back()</code><br>
+D. <code>(char)z[i]+1</code></p>
+<p><mark>37.</mark> ⑤处应填（）<br>
+A. <code>i--</code><br>
+B. <code>i = i+2</code><br>
+C. <code>i++</code><br>
+D. //不执行任何操作</p>
+<p><em>答案：</em> CBBBC<br>
+<em>解析：</em></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>33：判断下一个字符是否是数字，防止越界</p>
+</li>
+<li class="lvl-2">
+<p>34：向后放数字，例如&quot;12&quot;+“0”=12*10+0=120</p>
+</li>
+<li class="lvl-2">
+<p>35：count为字符连续出现的次数</p>
+</li>
+<li class="lvl-2">
+<p>36：没有数字时直接添加ch</p>
+</li>
+<li class="lvl-2">
+<p>37：无后续数字时，索引向后移动</p>
+</li>
+</ul>
+<h4 id="2-精明与糊涂">(2)精明与糊涂</h4>
+<p>有N个人，分为两类：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>①精明人：永远能正确判断其他人是精明还是糊涂；</p>
+</li>
+<li class="lvl-2">
+<p>②糊涂人：判断不可靠，会给出随机的判断。</p>
+</li>
+</ul>
+<p>已知精明人严格占据多数，即如果精明人有k个，则满足k＞N/2。你只能通过函数<code>query(i,j)</code>让第i个人判断第j个人：返回true表示判断结果为“精明人”；返回false表示判断结果为“糊涂人”。目标是通过互相判断，找出至少一个百分之百能确定的精明人（无需关心<code>query(i,j)</code> 的内部实现）。</p>
+<p>以下程序利用“精明人占多数”的优势，通过“消除”过程让人们互相判断并抵消，经过若干轮抵消后，最终留下的候选者必然属于多数派（精明人），试补全程序。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;vector&gt;</span> </span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> N; <br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-type">int</span> i, <span class="hljs-type">int</span> j)</span></span>;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123; <br>    cin &gt;&gt; N;<br>    <span class="hljs-type">int</span> candidate = <span class="hljs-number">0</span>; <br>    <span class="hljs-type">int</span> count = ①;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;N; ++i)&#123;<br>        <span class="hljs-keyword">if</span>(②)&#123; <br>            candidate = i;<br>            count = <span class="hljs-number">1</span>;<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            ③&#123;<br>                ④;<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                count++;<br>            &#125;<br>        &#125;<br>    &#125;<br>    cout &lt;&lt; ⑤ &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="38">
+<li class="lvl-4">
+<p>①处应填（）<br>
+A. 0<br>
+B. 1<br>
+C. N<br>
+D. -1</p>
+</li>
+<li class="lvl-4">
+<p>②处应填（）<br>
+A. <code>count &lt; 0</code><br>
+B. <code>count == 1</code><br>
+C. <code>count == 0</code><br>
+D. <code>query(candidate, i) == false</code></p>
+</li>
+<li class="lvl-4">
+<p>③处应填（）<br>
+A. <code>query(candidate,i)==false</code><br>
+B. <code>query(i,candidate)==true</code><br>
+C. <code>query(candidate,i)==false &amp;&amp; query(i,candidate)==false</code><br>
+D. <code>query(candidate,i)==false ||query(i,candidate)==false</code></p>
+</li>
+<li class="lvl-4">
+<p>④处应填（）<br>
+A. <code>count--</code><br>
+B. <code>break</code><br>
+C. <code>count++</code><br>
+D. <code>candidate=i</code></p>
+</li>
+<li class="lvl-4">
+<p>⑤处应填（）<br>
+A. <code>N-1</code><br>
+B. <code>count</code><br>
+C. <code>candidate</code><br>
+D. 0</p>
+</li>
+</ol>
+<p><em>答案：</em> BCDAC<br>
+<em>解析：</em></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>38：count=1表示当前候选者有效</p>
+</li>
+<li class="lvl-2">
+<p>39：当count=0，即没有有效候选者时将候选者更换为i，并重置count</p>
+</li>
+<li class="lvl-2">
+<p>40：至少有一个糊涂人</p>
+</li>
+<li class="lvl-2">
+<p>41：可以抵消</p>
+</li>
+<li class="lvl-2">
+<p>42：最后留下的是精明人</p>
+</li>
+</ul>
+
+    <p><img src="https://ts1.tc.mm.bing.net/th/id/R-C.1ca64a49b72a80af601e04b5dd28a25b?rik=XJHcbJf%2f3A5kRw&riu=http%3a%2f%2fwww.jongordon.com%2fpositivetip%2fsocialshare%2fThankYou.jpg&ehk=AEiksOmPd0XgKYwyMvcGR1Wn4ix63Wkt1Nu4yrBGDQI%3d&risl=&pid=ImgRaw&r=0" loading="lazy"></p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>light5QAQ<br>
+        <strong>本文链接：</strong><a href="https://light5qaq.github.io/2025/11/08/2025CSP-J%E5%88%9D%E8%B5%9B%E8%AF%95%E9%A2%98%E8%A7%A3%E6%9E%90/" title="https:&#x2F;&#x2F;light5qaq.github.io&#x2F;2025&#x2F;11&#x2F;08&#x2F;2025CSP-J%E5%88%9D%E8%B5%9B%E8%AF%95%E9%A2%98%E8%A7%A3%E6%9E%90&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;light5qaq.github.io&#x2F;2025&#x2F;11&#x2F;08&#x2F;2025CSP-J%E5%88%9D%E8%B5%9B%E8%AF%95%E9%A2%98%E8%A7%A3%E6%9E%90&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+</div>
+  
+  
+    <script async src="/js/copy-codeblock.js?v=1762606226142"></script>
+  
+
+  
+      <div class="nexmoe-post-footer">
+          请在你的配置文件中设置 slotComment
+
+      </div>
+  
+</div></div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
+        <div class="nexmoe-tool">
+
+            
+
+            
+            
+            <button class="mdui-fab catalog" style="overflow:unset;">
+                <i class="nexmoefont icon-i-catalog"></i>
+                <div class="nexmoe-toc">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2025-CCF-%E9%9D%9E%E4%B8%93%E4%B8%9A%E7%BA%A7%E5%88%AB%E8%BD%AF%E4%BB%B6%E8%83%BD%E5%8A%9B%E8%AE%A4%E8%AF%81%E7%AC%AC%E4%B8%80%E8%BD%AE%EF%BC%88CSP-J1%EF%BC%89%E5%85%A5%E9%97%A8%E7%BA%A7C-%E8%AF%AD%E8%A8%80%E8%AF%95%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">2025 CCF 非专业级别软件能力认证第一轮（CSP-J1）入门级C++语言试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%8D%95%E9%A1%B9%E9%80%89%E6%8B%A9%E9%A2%98%EF%BC%88%E5%85%B115%E9%A2%98%EF%BC%8C%E6%AF%8F%E9%A2%982%E5%88%86%EF%BC%8C%E5%85%B1%E8%AE%A130%E5%88%86%EF%BC%9B%E6%AF%8F%E9%A2%98%E6%9C%89%E4%B8%94%E4%BB%85%E6%9C%89%E4%B8%80%E4%B8%AA%E6%AD%A3%E7%A1%AE%E9%80%89%E9%A1%B9%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">一、单项选择题（共15题，每题2分，共计30分；每题有且仅有一个正确选项）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E9%98%85%E8%AF%BB%E7%A8%8B%E5%BA%8F%EF%BC%88%E7%A8%8B%E5%BA%8F%E8%BE%93%E5%85%A5%E4%B8%8D%E8%B6%85%E8%BF%87%E6%95%B0%E7%BB%84%E6%88%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AE%9A%E4%B9%89%E7%9A%84%E8%8C%83%E5%9B%B4%EF%BC%9B"><span class="toc-number">1.2.</span> <span class="toc-text">二、阅读程序（程序输入不超过数组或字符串定义的范围；</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1"><span class="toc-number">1.2.1.</span> <span class="toc-text">(1)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E9%A2%98"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">判断题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%95%E9%80%89%E9%A2%98"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">单选题</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2"><span class="toc-number">1.2.2.</span> <span class="toc-text">(2)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E9%A2%98-2"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">判断题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%95%E9%80%89%E9%A2%98-2"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">单选题</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3"><span class="toc-number">1.2.3.</span> <span class="toc-text">(3)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E9%A2%98-3"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">判断题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E9%A2%98"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">选择题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AE%8C%E5%96%84%E7%A8%8B%E5%BA%8F%EF%BC%88%E5%8D%95%E9%80%89%E9%A2%98%EF%BC%8C%E6%AF%8F%E5%B0%8F%E9%A2%983%E5%88%86%EF%BC%8C%E5%85%B1%E8%AE%A130%E5%88%86%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">三、完善程序（单选题，每小题3分，共计30分）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81"><span class="toc-number">1.3.1.</span> <span class="toc-text">（1）字符串解码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%B2%BE%E6%98%8E%E4%B8%8E%E7%B3%8A%E6%B6%82"><span class="toc-number">1.3.2.</span> <span class="toc-text">(2)精明与糊涂</span></a></li></ol></li></ol></li></ol>
+                </div>
+            </button>
+            
+
+            
+
+            <a href="#nexmoe-content" class="backtop toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+        </div>
+    </div>
+</div></div><div id="nexmoe-footer"><!--!--></div><div id="nexmoe-search-space"><div class="search-container"><div class="search-header"><div class="search-input-container"><input class="search-input" type="text" placeholder="搜索" onInput="sinput();"></div><a class="search-close" onclick="sclose();">×</a></div><div class="search-body"></div></div></div><div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
+</div></body></html>
