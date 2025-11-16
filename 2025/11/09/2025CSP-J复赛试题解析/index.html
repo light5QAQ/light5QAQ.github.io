@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="zh"><head>
+<title>2025CSP-J复赛试题解析 - light的赛博小窝</title>
+<meta charset="UTF-8">
+<meta name="keywords" content="博客">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<meta name="description" content="复赛没考好，写题解以泄愤  致敬传奇#Shang6Shan3Ruo3Shui3🫡 T1 拼数 题目传送门 **题意:**提取所有的数字并进行降序排列 方法比较多，例如全存到数组中进行排序，桶计数进行输出，或vector自动排序等。 数组排序方法如下: 123456789101112131415161718192021#include&lt;bits&#x2F;stdc++.h&gt;using name">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2025CSP-J复赛试题解析">
+<meta property="og:url" content="https://light5qaq.github.io/2025/11/09/2025CSP-J%E5%A4%8D%E8%B5%9B%E8%AF%95%E9%A2%98%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:site_name" content="light的赛博小窝">
+<meta property="og:description" content="复赛没考好，写题解以泄愤  致敬传奇#Shang6Shan3Ruo3Shui3🫡 T1 拼数 题目传送门 **题意:**提取所有的数字并进行降序排列 方法比较多，例如全存到数组中进行排序，桶计数进行输出，或vector自动排序等。 数组排序方法如下: 123456789101112131415161718192021#include&lt;bits&#x2F;stdc++.h&gt;using name">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-11-09T11:44:16.000Z">
+<meta property="article:modified_time" content="2025-11-15T12:38:19.090Z">
+<meta property="article:author" content="light5QAQ">
+<meta property="article:tag" content="Code">
+<meta property="article:tag" content="Unfinished">
+<meta name="twitter:card" content="summary">
+
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1763299274904">
+
+<link rel="stylesheet" href="/css/style.css?v=1763299274904">
+
+
+
+
+    
+        <link rel="stylesheet" href="/custom.css?v=1763299274904">
+    
+
+
+
+<script src="/lib/mdui_043tiny/mdui.js" async></script>
+<script src="/lib/fancybox/fancybox.umd.js" async></script>
+<script src="/lib/lax.min.js" async></script>
+
+
+<script async src="/js/app.js?v=1763299274904"></script>
+
+ 
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4D4ZJ9G024"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+
+  gtag("config", "G-4D4ZJ9G024");
+</script>
+
+
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
+/>
+<meta name="generator" content="Hexo 7.3.0"></head><body class="nexmoe mdui-drawer-body-left"><div id="nexmoe-background"><div class="nexmoe-bg" style="background-image: url(https://img-baofun.zhhainiao.com/fs/7e3b72744eed5f25a64ba45b355c4838.jpg)"></div><div class="mdui-appbar mdui-shadow-0"><div class="mdui-toolbar"><a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: &#039;#drawer&#039;, swipe: true}" title="menu"><i class="mdui-icon nexmoefont icon-menu"></i></a><div class="mdui-toolbar-spacer"></div><a class="mdui-btn mdui-btn-icon" href="/" title="light5QAQ"><img src="https://ts4.tc.mm.bing.net/th/id/OIP-C.gjakIQWnviPIy3efnqpBUwHaG1?rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3" alt="light5QAQ"></a></div></div></div><div id="nexmoe-header"><div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="light5QAQ">
+            <img src="https://ts4.tc.mm.bing.net/th/id/OIP-C.gjakIQWnviPIy3efnqpBUwHaG1?rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3" alt="light5QAQ" alt="light5QAQ">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>11</div>
+        <div><span>标签</span>10</div>
+        <div><span>分类</span>6</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/file.html" title="文件下载">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                文件下载
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/secret.html" title="我的私密库">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的私密库
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/donate.html" title="给我赞助">
+            <i class="mdui-list-item-icon nexmoefont icon-coffee"></i>
+            <div class="mdui-list-item-content">
+                给我赞助
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于博主">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博主
+            </div>
+        </a>
+        
+    </div>
+    
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
+</div>
+
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://qun.qq.com/universal-share/share?ac=1&authKey=ba1tDTzORoRik1RqXRcnUelcuyWhMBJb2wHNpmB4h5zmNzD%2Bdezf0b33TnateSuV&busi_data=eyJncm91cENvZGUiOiIxMDIxMDgxNjQ5IiwidG9rZW4iOiJLd3RDY3pCU0k1dnpHRzBTclNmeEVXMGZLVlR6L1B0ZURMNDlzK0JYV282UENVaExqWnQ4WlIxdEE3QlhUZHg2IiwidWluIjoiMTE2MjkyMDM3MSJ9&data=wbYH-67H2R7aXKWocMq6gZRpnwi288wcOZkgIolPqlyjJpWnC0CHygDXsofQXoy_b-YeLM9OcQKCsNutjB5HZQ&svctype=4&tempid=h5_group_info"
+			target="_blank"
+			mdui-tooltip="{content: 'QQ群'}"
+			style="
+				color: rgb(249, 174, 8);
+				background-color: rgba(249, 174, 8, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-QQ"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://space.bilibili.com/547821271"
+			target="_blank"
+			mdui-tooltip="{content: '哔哩哔哩'}"
+			style="
+				color: rgb(231, 106, 141);
+				background-color: rgba(231, 106, 141, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-bilibili"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/light5QAQ/"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.zhihu.com/people/light-97-4-7"
+			target="_blank"
+			mdui-tooltip="{content: '知乎'}"
+			style="
+				color: rgb(30, 136, 229);
+				background-color: rgba(30, 136, 229, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-zhihu"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.luogu.com.cn/user/565142"
+			target="_blank"
+			mdui-tooltip="{content: '洛谷'}"
+			style="
+				color: rgb(247, 132, 34);
+				background-color: rgba(247, 132, 34, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-rss"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Artwork/">Artwork</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Chat/">Chat</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Entertainment/">Entertainment</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Other/">Other</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Tech/">Tech</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/Anime/" style="font-size: 10px;">Anime</a> <a href="/tags/Code/" style="font-size: 20px;">Code</a> <a href="/tags/Help/" style="font-size: 10px;">Help</a> <a href="/tags/Literature/" style="font-size: 20px;">Literature</a> <a href="/tags/Other/" style="font-size: 20px;">Other</a> <a href="/tags/PH/" style="font-size: 15px;">PH</a> <a href="/tags/Philosophy/" style="font-size: 20px;">Philosophy</a> <a href="/tags/Theory/" style="font-size: 15px;">Theory</a> <a href="/tags/Unfinished/" style="font-size: 15px;">Unfinished</a> <a href="/tags/Write-up/" style="font-size: 10px;">Write-up</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(10);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+    
+        
+        <!-- 一言 -->
+<div class="nexmoe-widget-wrap">
+  <h3 class="nexmoe-widget-title">
+    一言
+  </h3>
+  <div class="nexmoe-widget">
+    <ul class="hitokoto-box">
+      <li id="hitokoto_text_parent" class="hitokoto-text" hitokotoCategory="">
+        <a href="#" id="hitokoto_text">
+          
+        </a>
+        <a href="#" id="hitokoto_error_text" style="display: none;">
+          
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  let hitokotoText = document.getElementById('hitokoto_text')
+  let hitokotoErroText = document.getElementById('hitokoto_error_text')
+  let hitokotoCategory = document.getElementById('hitokoto_text_parent').getAttribute('hitokotoCategory')
+  window.addEventListener('load', function () {
+    let url = 'https://v1.hitokoto.cn'
+    if (hitokotoCategory) {
+      url += '?c=' + hitokotoCategory
+    }
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        hitokotoText.innerText = "「 " + data.hitokoto + " 」 from " + data.from
+        hitokotoText.href = 'https://hitokoto.cn/?uuid=' + data.uuid
+      })
+      .catch((reason) => {
+        console.error(11, reason)
+        hitokotoText.style.display = 'none'
+        hitokotoErroText.style.display = 'block'
+      })
+  })
+</script>
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/">2025</a><span class="archive-list-count">11</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/11/15/%E4%B8%AD%E5%9B%BD%E9%83%BD%E5%B8%82%E4%BC%A0%E8%AF%B4%E5%86%B0%E5%B1%B1%E5%9B%BE%E6%B5%85%E6%9E%90/">中国都市传说冰山图浅析</a>
+          </li>
+        
+          <li>
+            <a href="/2025/11/09/2025CSP-J%E5%A4%8D%E8%B5%9B%E8%AF%95%E9%A2%98%E8%A7%A3%E6%9E%90/">2025CSP-J复赛试题解析</a>
+          </li>
+        
+          <li>
+            <a href="/2025/11/08/2025CSP-J%E5%88%9D%E8%B5%9B%E8%AF%95%E9%A2%98%E8%A7%A3%E6%9E%90/">2025CSP-J初赛试题解析</a>
+          </li>
+        
+          <li>
+            <a href="/2025/10/05/%E4%B8%AD%E4%BA%8C%E7%97%85%E3%81%A7%E3%82%82%E6%81%8B%E3%81%8C%E3%81%97%E3%81%9F%E3%81%84%EF%BC%81%E4%B8%AD%E5%9B%B4%E7%BB%95%E4%B8%AD%E4%BA%8C%E7%97%85%E5%8F%91%E5%B1%95%E7%9A%84%E7%AC%A6%E5%8F%B7%E5%8C%96%E6%80%9D%E8%80%83/">中二病でも恋がしたい！中围绕中二病发展的符号化思考</a>
+          </li>
+        
+          <li>
+            <a href="/2025/09/13/%E6%82%BC%E8%87%AA%E5%8A%A8%E9%93%85/">悼自动铅</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-link">
+		<ul>
+        
+            <li>
+                <a href="https://lab.magiconch.com/" target="_blank" >
+                    <img src="https://t.magiconch.com/static/img/avatar.jpg" alt="神奇海螺试验场by卜卜口"></img>
+                    <p>神奇海螺试验场by卜卜口</p>
+                </a>
+            </li>
+        
+		</ul>
+    </div>
+</div>
+<style>
+.nexmoe-widget-wrap .nexmoe-link ul li a {
+    text-align : center;
+}
+.nexmoe-widget-wrap .nexmoe-link ul li a img {
+    max-width : 100%;
+}
+.nexmoe-widget-wrap .nexmoe-link ul li a p {
+    margin: 10px 0;
+}
+</style>
+
+    
+   
+    <div class="nexmoe-copyright">
+        &copy; 2025 light5QAQ
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+	<div style="font-size: 13px">
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+   	</div>
+	<script>
+ 	    fetch('https://v1.hitokoto.cn')
+             .then(response => response.json())
+             .then(data => {
+    	       const hitokoto = document.querySelector('#hitokoto_text')
+     	       hitokoto.href = `https://hitokoto.cn/?uuid=${data.uuid}`
+               hitokoto.innerText = data.hitokoto
+             })
+             .catch(console.error)
+	</script>
+        <br><a target="_blank" href="https://beian.miit.gov.cn/">鄂ICP备2020018486号</a>
+<br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral">
+<img src="https://i.dawnlab.me/c0268c1e6cfd0863d6ba35be1575941a.png" width="150px"></a>
+
+    </div>
+</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><div class="nexmoe-post">
+  <article>
+    
+        <div class="nexmoe-post-cover absolute" style="padding-top: 25%;"> 
+            <img src="https://ts2.tc.mm.bing.net/th/id/OIP-C.--cTPazK0ct5Y8D_nlJgoQHaFT?cb=ucfimgc2&rs=1&pid=ImgDetMain&o=7&rm=3" alt="2025CSP-J复赛试题解析" loading="lazy">
+            <h1>2025CSP-J复赛试题解析</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2025年11月09日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/Tech/">Tech</a>
+        
+        
+    <a><i class="nexmoefont icon-areachart"></i>约861字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要4分钟</a>
+
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <blockquote>
+<p>复赛没考好，写题解以泄愤</p>
+</blockquote>
+<p>致敬传奇#Shang6Shan3Ruo3Shui3🫡</p>
+<h3 id="T1-拼数">T1 拼数</h3>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P14357" title="题目传送门">题目传送门</a></p>
+<p>**题意:**提取所有的数字并进行降序排列</p>
+<p>方法比较多，例如全存到数组中进行排序，桶计数进行输出，或vector自动排序等。</p>
+<p>数组排序方法如下:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e6</span><span class="hljs-number">+5</span>;<br>string s;<br><span class="hljs-type">int</span> a[N];<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-comment">//freopen(&quot;number.in&quot;,&quot;r&quot;,stdin);</span><br>	<span class="hljs-comment">//freopen(&quot;number.out&quot;,&quot;w&quot;,stdout);</span><br>	ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>),cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>),cout.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>); <span class="hljs-comment">//快读</span><br>	cin&gt;&gt;s;<br>	<span class="hljs-type">int</span> len=s.<span class="hljs-built_in">size</span>();<br>	<span class="hljs-type">int</span> cnt=<span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;len;i++)&#123;<br>		<span class="hljs-keyword">if</span>(s[i]&gt;=<span class="hljs-string">&#x27;0&#x27;</span>&amp;&amp;s[i]&lt;=<span class="hljs-string">&#x27;9&#x27;</span>)&#123;<br>			a[++cnt]=s[i]-<span class="hljs-string">&#x27;0&#x27;</span>;<br>		&#125;<br>	&#125;<br>	<span class="hljs-built_in">sort</span>(a<span class="hljs-number">+1</span>,a+cnt<span class="hljs-number">+1</span>);<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=cnt;i&gt;=<span class="hljs-number">1</span>;i--) cout&lt;&lt;a[i];<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="T2-座位">T2 座位</h3>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P14358" title="题目传送门">题目传送门</a></p>
+<p>**题意:**蛇形排座</p>
+<p>既然是有规律的排座问题，显然可以用数学解决。不难发现需要讨论是单数列还是双数列，这样就可以知道是从前往后还是从后往前了。要注意输入先行后列，输出先列后行。</p>
+<p>方法如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">105</span>;<br><span class="hljs-type">int</span> n,m;<br><span class="hljs-type">int</span> a[N];<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-comment">//freopen(&quot;seat.in&quot;,&quot;r&quot;,stdin);</span><br>	<span class="hljs-comment">//freopen(&quot;seat.out&quot;,&quot;w&quot;,stdout);</span><br>	ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>),cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>),cout.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>); <span class="hljs-comment">//快读</span><br>	cin&gt;&gt;n&gt;&gt;m;<br>	<span class="hljs-type">int</span> r;<span class="hljs-comment">//小R的成绩 </span><br>	cin&gt;&gt;r;<br>	<span class="hljs-type">int</span> cnt=<span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">2</span>;i&lt;=n*m;i++)&#123;<br>		<span class="hljs-type">int</span> num; <span class="hljs-comment">//其他人的成绩 </span><br>		cin&gt;&gt;num;<br>		<span class="hljs-keyword">if</span>(num&gt;r) cnt++; <span class="hljs-comment">//记录小R前面的人数 </span><br>	&#125;<br>	cnt++; <span class="hljs-comment">//cnt=小R的座位号 </span><br>	<span class="hljs-type">int</span> a=cnt/n,b=cnt%n;<br>	<span class="hljs-keyword">if</span>(b==<span class="hljs-number">0</span>)&#123; <span class="hljs-comment">//如果cnt恰好在边上 </span><br>		cout&lt;&lt;a&lt;&lt;<span class="hljs-string">&quot; &quot;</span>; <span class="hljs-comment">//列数即为a </span><br>		<span class="hljs-keyword">if</span>(a%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>)&#123; <span class="hljs-comment">//偶数列从下往上 </span><br>			cout&lt;&lt;<span class="hljs-number">1</span>; <span class="hljs-comment">//行数 </span><br>		&#125;<span class="hljs-keyword">else</span>&#123; <span class="hljs-comment">//奇数列从上往下 </span><br>			cout&lt;&lt;n; <span class="hljs-comment">//行数 </span><br>		&#125;<br>	&#125;<span class="hljs-keyword">else</span>&#123; <span class="hljs-comment">//否则 </span><br>		cout&lt;&lt;a<span class="hljs-number">+1</span>&lt;&lt;<span class="hljs-string">&quot; &quot;</span>; <span class="hljs-comment">//列数即为a+1 </span><br>		<span class="hljs-keyword">if</span>((a<span class="hljs-number">+1</span>)%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>)&#123; <span class="hljs-comment">//偶数列从下往上 </span><br>			cout&lt;&lt;n-b<span class="hljs-number">+1</span>; <span class="hljs-comment">//行数 </span><br>		&#125;<span class="hljs-keyword">else</span>&#123; <span class="hljs-comment">//奇数列从上往下 </span><br>			cout&lt;&lt;b;<br>		&#125;<br>	&#125;<br>	<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="T3-异或和">T3 异或和</h3>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P14359" title="题目传送门">题目传送门</a></p>
+<p>**题意：**找出异或和为k的区间的数量数</p>
+<p>区间相关首先考虑前缀和(如果<code>a xor b=c</code>有<code>c xor a=b</code>即异或为自身的逆运算)，数量数相关考虑dp，</p>
+<p>方法如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">5e5</span><span class="hljs-number">+5</span>;<br><span class="hljs-type">int</span> n,k;<br><span class="hljs-type">int</span> a[N],b[N];<br><span class="hljs-type">int</span> f[N]; <span class="hljs-comment">//前i个数的可能数 </span><br><span class="hljs-type">int</span> l[<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">20</span><span class="hljs-number">+1</span>]; <span class="hljs-comment">//存储上一次出现异或和为i的位置 </span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-comment">//freopen(&quot;xor.in&quot;,&quot;r&quot;,stdin);</span><br>	<span class="hljs-comment">//freopen(&quot;xor.out&quot;,&quot;w&quot;,stdout);</span><br>	ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>),cout.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>),cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>	cin&gt;&gt;n&gt;&gt;k;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>		cin&gt;&gt;a[i];<br>		b[i]=a[i]^b[i<span class="hljs-number">-1</span>]; <span class="hljs-comment">//异或前缀和 </span><br>	&#125; <br>	<span class="hljs-built_in">memset</span>(l,<span class="hljs-number">-1</span>,<span class="hljs-built_in">sizeof</span>(l));<br>	l[<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>; <br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>		f[i]=f[i<span class="hljs-number">-1</span>];<br>		<span class="hljs-keyword">if</span>(l[b[i]^k]&gt;=<span class="hljs-number">0</span>)&#123; <span class="hljs-comment">//如果存在一个位置使前缀和为k </span><br>			f[i]=<span class="hljs-built_in">max</span>(f[i],f[l[b[i]^k]]<span class="hljs-number">+1</span>);	<br>		&#125;<br>		l[b[i]]=i;<br>	&#125;<br>	cout&lt;&lt;f[n]&lt;&lt;endl;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="T4-多边形">T4 多边形</h3>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P14360" title="题目传送门">题目传送门</a></p>
+<p>**题意：**找出可以拼成多边形的木棍方案个数(即满足<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle scriptlevel="0" displaystyle="false"><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></msubsup></mstyle><mo>⋅</mo><msub><mi>l</mi><mi>i</mi></msub><mo>&gt;</mo><mn>2</mn><mo>×</mo><mi>m</mi><mi>a</mi><msubsup><mi>x</mi><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></msubsup><mo>⋅</mo><msub><mi>l</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex"> {\textstyle \sum_{i=1}^{m}} \cdot l_i &gt; 2 \times max^m_{i=1} \cdot l_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.104em;vertical-align:-0.2997em;"></span><span class="mord"><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8043em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">m</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0197em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9231em;vertical-align:-0.2587em;"></span><span class="mord mathnormal">ma</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-2.4413em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2587em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0197em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> )。</p>
+<p>不想写了 dp即可</p>
+
+    <p><img src="https://ts1.tc.mm.bing.net/th/id/R-C.1ca64a49b72a80af601e04b5dd28a25b?rik=XJHcbJf%2f3A5kRw&riu=http%3a%2f%2fwww.jongordon.com%2fpositivetip%2fsocialshare%2fThankYou.jpg&ehk=AEiksOmPd0XgKYwyMvcGR1Wn4ix63Wkt1Nu4yrBGDQI%3d&risl=&pid=ImgRaw&r=0" loading="lazy"></p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>light5QAQ<br>
+        <strong>本文链接：</strong><a href="https://light5qaq.github.io/2025/11/09/2025CSP-J%E5%A4%8D%E8%B5%9B%E8%AF%95%E9%A2%98%E8%A7%A3%E6%9E%90/" title="https:&#x2F;&#x2F;light5qaq.github.io&#x2F;2025&#x2F;11&#x2F;09&#x2F;2025CSP-J%E5%A4%8D%E8%B5%9B%E8%AF%95%E9%A2%98%E8%A7%A3%E6%9E%90&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;light5qaq.github.io&#x2F;2025&#x2F;11&#x2F;09&#x2F;2025CSP-J%E5%A4%8D%E8%B5%9B%E8%AF%95%E9%A2%98%E8%A7%A3%E6%9E%90&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Code/" rel="tag">Code</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Unfinished/" rel="tag">Unfinished</a>
+    
+</div>
+  
+  
+    <script async src="/js/copy-codeblock.js?v=1763299274552"></script>
+  
+
+  
+      <div class="nexmoe-post-footer">
+          请在你的配置文件中设置 slotComment
+
+      </div>
+  
+</div></div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
+        <div class="nexmoe-tool">
+
+            
+
+            
+            
+            <button class="mdui-fab catalog" style="overflow:unset;">
+                <i class="nexmoefont icon-i-catalog"></i>
+                <div class="nexmoe-toc">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#T1-%E6%8B%BC%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">T1 拼数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T2-%E5%BA%A7%E4%BD%8D"><span class="toc-number">2.</span> <span class="toc-text">T2 座位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T3-%E5%BC%82%E6%88%96%E5%92%8C"><span class="toc-number">3.</span> <span class="toc-text">T3 异或和</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T4-%E5%A4%9A%E8%BE%B9%E5%BD%A2"><span class="toc-number">4.</span> <span class="toc-text">T4 多边形</span></a></li></ol>
+                </div>
+            </button>
+            
+
+            
+
+            <a href="#nexmoe-content" class="backtop toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+        </div>
+    </div>
+</div></div><div id="nexmoe-footer"><!--!--></div><div id="nexmoe-search-space"><div class="search-container"><div class="search-header"><div class="search-input-container"><input class="search-input" type="text" placeholder="搜索" onInput="sinput();"></div><a class="search-close" onclick="sclose();">×</a></div><div class="search-body"></div></div></div><div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
+</div></body></html>
