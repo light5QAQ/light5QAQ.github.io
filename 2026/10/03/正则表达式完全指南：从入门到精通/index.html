@@ -1,0 +1,818 @@
+<!doctype html>
+<html lang="zh"><head>
+<title>正则表达式完全指南：从入门到精通 - light的赛博小窝</title>
+<meta charset="UTF-8">
+<meta name="keywords" content="博客">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<meta name="description" content="正则表达式完全指南：从入门到精通 The Complete Guide of Regular Expression: Beginner to Mastery 一、简介 | Introduction 1.1 什么是正则表达式 正则表达式（Regular Expression）是一种用于描述字符串匹配模式的工具。它由一系列特殊字符和普通字符组成，可以用来检索、替换、提取那些符合某个模式的文本。 1.2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正则表达式完全指南：从入门到精通">
+<meta property="og:url" content="https://light5qaq.github.io/2026/10/03/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%EF%BC%9A%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A/index.html">
+<meta property="og:site_name" content="light的赛博小窝">
+<meta property="og:description" content="正则表达式完全指南：从入门到精通 The Complete Guide of Regular Expression: Beginner to Mastery 一、简介 | Introduction 1.1 什么是正则表达式 正则表达式（Regular Expression）是一种用于描述字符串匹配模式的工具。它由一系列特殊字符和普通字符组成，可以用来检索、替换、提取那些符合某个模式的文本。 1.2">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-03T01:50:25.000Z">
+<meta property="article:modified_time" content="2026-10-03T13:12:45.223Z">
+<meta property="article:author" content="light5QAQ">
+<meta property="article:tag" content="Code">
+<meta property="article:tag" content="Help">
+<meta name="twitter:card" content="summary">
+
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1791033396646">
+
+<link rel="stylesheet" href="/css/style.css?v=1791033396646">
+
+
+
+
+    
+        <link rel="stylesheet" href="/custom.css?v=1791033396646">
+    
+
+
+
+<script src="/lib/mdui_043tiny/mdui.js" async></script>
+<script src="/lib/fancybox/fancybox.umd.js" async></script>
+<script src="/lib/lax.min.js" async></script>
+
+
+<script async src="/js/app.js?v=1791033396647"></script>
+
+ 
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4D4ZJ9G024"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+
+  gtag("config", "G-4D4ZJ9G024");
+</script>
+
+
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
+/>
+<meta name="generator" content="Hexo 7.3.0"></head><body class="nexmoe mdui-drawer-body-left"><div id="nexmoe-background"><div class="nexmoe-bg" style="background-image: url(https://img-baofun.zhhainiao.com/fs/7e3b72744eed5f25a64ba45b355c4838.jpg)"></div><div class="mdui-appbar mdui-shadow-0"><div class="mdui-toolbar"><a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: &#039;#drawer&#039;, swipe: true}" title="menu"><i class="mdui-icon nexmoefont icon-menu"></i></a><div class="mdui-toolbar-spacer"></div><a class="mdui-btn mdui-btn-icon" href="/" title="light5QAQ"><img src="https://ts4.tc.mm.bing.net/th/id/OIP-C.gjakIQWnviPIy3efnqpBUwHaG1?rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3" alt="light5QAQ"></a></div></div></div><div id="nexmoe-header"><div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="light5QAQ">
+            <img src="https://ts4.tc.mm.bing.net/th/id/OIP-C.gjakIQWnviPIy3efnqpBUwHaG1?rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3" alt="light5QAQ" alt="light5QAQ">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>22</div>
+        <div><span>标签</span>13</div>
+        <div><span>分类</span>6</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/file.html" title="文件下载">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                文件下载
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/secret.html" title="我的私密库">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的私密库
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/donate.html" title="给我赞助">
+            <i class="mdui-list-item-icon nexmoefont icon-coffee"></i>
+            <div class="mdui-list-item-content">
+                给我赞助
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于博主">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博主
+            </div>
+        </a>
+        
+    </div>
+    
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
+</div>
+
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://qun.qq.com/universal-share/share?ac=1&authKey=ba1tDTzORoRik1RqXRcnUelcuyWhMBJb2wHNpmB4h5zmNzD%2Bdezf0b33TnateSuV&busi_data=eyJncm91cENvZGUiOiIxMDIxMDgxNjQ5IiwidG9rZW4iOiJLd3RDY3pCU0k1dnpHRzBTclNmeEVXMGZLVlR6L1B0ZURMNDlzK0JYV282UENVaExqWnQ4WlIxdEE3QlhUZHg2IiwidWluIjoiMTE2MjkyMDM3MSJ9&data=wbYH-67H2R7aXKWocMq6gZRpnwi288wcOZkgIolPqlyjJpWnC0CHygDXsofQXoy_b-YeLM9OcQKCsNutjB5HZQ&svctype=4&tempid=h5_group_info"
+			target="_blank"
+			mdui-tooltip="{content: 'QQ群'}"
+			style="
+				color: rgb(249, 174, 8);
+				background-color: rgba(249, 174, 8, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-QQ"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://space.bilibili.com/547821271"
+			target="_blank"
+			mdui-tooltip="{content: '哔哩哔哩'}"
+			style="
+				color: rgb(231, 106, 141);
+				background-color: rgba(231, 106, 141, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-bilibili"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/light5QAQ/"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.zhihu.com/people/light-97-4-7"
+			target="_blank"
+			mdui-tooltip="{content: '知乎'}"
+			style="
+				color: rgb(30, 136, 229);
+				background-color: rgba(30, 136, 229, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-zhihu"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.luogu.com.cn/user/565142"
+			target="_blank"
+			mdui-tooltip="{content: '洛谷'}"
+			style="
+				color: rgb(247, 132, 34);
+				background-color: rgba(247, 132, 34, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-rss"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Artwork/">Artwork</a>
+          <span class="category-list-count">9</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Chat/">Chat</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Entertainment/">Entertainment</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Other/">Other</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Study/">Study</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Tech/">Tech</a>
+          <span class="category-list-count">6</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/Anime/" style="font-size: 17.14px;">Anime</a> <a href="/tags/Code/" style="font-size: 15.71px;">Code</a> <a href="/tags/Game/" style="font-size: 10px;">Game</a> <a href="/tags/Help/" style="font-size: 12.86px;">Help</a> <a href="/tags/Intro/" style="font-size: 10px;">Intro</a> <a href="/tags/Literature/" style="font-size: 20px;">Literature</a> <a href="/tags/Other/" style="font-size: 14.29px;">Other</a> <a href="/tags/PH/" style="font-size: 11.43px;">PH</a> <a href="/tags/Philosophy/" style="font-size: 12.86px;">Philosophy</a> <a href="/tags/Religion/" style="font-size: 10px;">Religion</a> <a href="/tags/Theory/" style="font-size: 18.57px;">Theory</a> <a href="/tags/Unfinished/" style="font-size: 11.43px;">Unfinished</a> <a href="/tags/Write-up/" style="font-size: 10px;">Write-up</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(13);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+    
+        
+        <!-- 一言 -->
+<div class="nexmoe-widget-wrap">
+  <h3 class="nexmoe-widget-title">
+    一言
+  </h3>
+  <div class="nexmoe-widget">
+    <ul class="hitokoto-box">
+      <li id="hitokoto_text_parent" class="hitokoto-text" hitokotoCategory="">
+        <a href="#" id="hitokoto_text">
+          
+        </a>
+        <a href="#" id="hitokoto_error_text" style="display: none;">
+          
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  let hitokotoText = document.getElementById('hitokoto_text')
+  let hitokotoErroText = document.getElementById('hitokoto_error_text')
+  let hitokotoCategory = document.getElementById('hitokoto_text_parent').getAttribute('hitokotoCategory')
+  window.addEventListener('load', function () {
+    let url = 'https://v1.hitokoto.cn'
+    if (hitokotoCategory) {
+      url += '?c=' + hitokotoCategory
+    }
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        hitokotoText.innerText = "「 " + data.hitokoto + " 」 from " + data.from
+        hitokotoText.href = 'https://hitokoto.cn/?uuid=' + data.uuid
+      })
+      .catch((reason) => {
+        console.error(11, reason)
+        hitokotoText.style.display = 'none'
+        hitokotoErroText.style.display = 'block'
+      })
+  })
+</script>
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/">2026</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/">2025</a><span class="archive-list-count">11</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/10/03/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%EF%BC%9A%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A/">正则表达式完全指南：从入门到精通</a>
+          </li>
+        
+          <li>
+            <a href="/2026/08/29/%E5%9C%A8%E8%89%B2%E5%BD%A9%E4%B8%AD/">在色彩中</a>
+          </li>
+        
+          <li>
+            <a href="/2026/08/19/%E6%96%B0%E6%B5%B7%E8%AF%9A%E7%81%BE%E9%9A%BE%E4%B8%89%E9%83%A8%E6%9B%B2%E6%9E%81%E7%9F%AD%E8%AF%84%E8%AE%BA/">新海诚灾难三部曲极短评论</a>
+          </li>
+        
+          <li>
+            <a href="/2026/08/12/%E3%80%8A%E3%81%8B%E3%81%90%E3%82%84%E6%A7%98%E3%81%AF%E5%91%8A%E3%82%89%E3%81%9B%E3%81%9F%E3%81%84%E3%80%8B%E2%80%94%E2%80%94%E5%AF%BB%E6%B1%82%E7%9C%9F%E6%AD%A3%E7%9A%84%E7%88%B1/">《かぐや様は告らせたい》——寻求真正的爱</a>
+          </li>
+        
+          <li>
+            <a href="/2026/08/06/%E3%80%8A%E3%81%8B%E3%82%89%E3%81%8B%E3%81%84%E4%B8%8A%E6%89%8B%E3%81%AE%E9%AB%98%E6%9C%A8%E3%81%95%E3%82%93%E3%80%8B%E4%B8%AD%E7%9A%84%E6%96%B0%E6%84%8F%E4%B8%8E%E7%BC%BA%E6%86%BE/">《からかい上手の高木さん》中的新意与缺憾</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+        
+   
+    <div class="nexmoe-copyright">
+        &copy; 2026 light5QAQ
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+	<script>
+ 	    fetch('https://v1.hitokoto.cn')
+             .then(response => response.json())
+             .then(data => {
+    	       const hitokoto = document.querySelector('#hitokoto_text')
+     	       hitokoto.href = `https://hitokoto.cn/?uuid=${data.uuid}`
+               hitokoto.innerText = data.hitokoto
+             })
+             .catch(console.error)
+	</script>
+	<div style="font-size: 13px">
+            <link rel="stylesheet" href="https://widget.heweather.net/standard/static/css/he-standard.css?v=1.4.0"><script src="https://widget.heweather.net/standard/static/js/he-standard.js?v=1.4.0"></script><script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            本站总访问量  <a id="busuanzi_value_site_pv"></a> 次<br>
+            本站访客数<a id="busuanzi_value_site_uv"></a>人次
+    	</div>
+        <img src="https://count.getloli.com/@:1451426?name=%3A1451426&theme=rule34&padding=5&offset=0&align=top&scale=1&pixelated=1&darkmode=auto" alt=":name" />
+<br><a target="_blank" href="https://beian.miit.gov.cn/">鄂ICP备2020018486号</a>
+<br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral">
+<img src="https://i.dawnlab.me/c0268c1e6cfd0863d6ba35be1575941a.png" width="150px"></a>
+
+    </div>
+</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><div class="nexmoe-post">
+  <article>
+    
+        <div class="nexmoe-post-cover absolute" style="padding-top: 25%;"> 
+            <img src="https://cdn.jsdelivr.net/gh/light5QAQ/image@main/img/20261003210750835.png" alt="正则表达式完全指南：从入门到精通" loading="lazy">
+            <h1>正则表达式完全指南：从入门到精通</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2026年10月03日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/Tech/">Tech</a>
+        
+        
+    <a><i class="nexmoefont icon-areachart"></i>约2k字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要8分钟</a>
+
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <h1 id="正则表达式完全指南：从入门到精通">正则表达式完全指南：从入门到精通</h1>
+<h2 id="The-Complete-Guide-of-Regular-Expression-Beginner-to-Mastery">The Complete Guide of Regular Expression: Beginner to Mastery</h2>
+<h2 id="一、简介-Introduction">一、简介 | Introduction</h2>
+<h3 id="1-1-什么是正则表达式">1.1 什么是正则表达式</h3>
+<p><strong>正则表达式</strong>（<em>Regular Expression</em>）是一种用于描述字符串匹配模式的工具。它由一系列特殊字符和普通字符组成，可以用来检索、替换、提取那些符合某个模式的文本。</p>
+<h3 id="1-2-发展历史">1.2 发展历史</h3>
+<p>正则表达式的概念最早由美国数学家<strong>斯蒂芬·科尔·克莱尼</strong>（<em>Stephen Cole Kleene</em>）于 1951 年提出，用于描述正则语言（即正规语言，能够被有限自动机识别的字符串集合）。1968 年，<strong>肯尼斯·蓝·汤普森</strong>（<em>Ken Thompson</em>） 将其引入文本编辑器 QED 和 Unix 的 ed 编辑器中，此后逐渐发展出 POSIX 标准和 Perl 风格两大流派，并被几乎所有现代编程语言所支持。</p>
+<h3 id="1-3-为什么需要正则表达式">1.3 为什么需要正则表达式</h3>
+<p>在没有正则表达式的情况下，验证邮箱合法性可能需要写几十行 <code>if-else</code> 代码；而使用正则表达式则十分简洁：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs regex">^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]&#123;2,&#125;$<br></code></pre></td></tr></table></figure>
+<p>正则表达式广泛应用于：表单验证、批量替换、数据爬取、语法高亮等大家所熟悉的功能。</p>
+<hr>
+<h2 id="二、原理-Principle">二、原理 | Principle</h2>
+<h3 id="2-1-有限状态自动机">2.1 有限状态自动机</h3>
+<p>正则表达式的原理是<strong>有限自动机</strong>（<em>Finite Automaton，FA</em>，即由五个主要要素组成的一个顺序系统）。一个正则表达式在匹配时，本质上是在状态机中不断转移状态的过程。</p>
+<p>例如正则表达式 <code>ab*c</code> 可以理解为：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs txt">起始状态 --a--&gt; 状态1 --b*--&gt; 状态2 --c--&gt; 接受状态<br></code></pre></td></tr></table></figure>
+<p>当输入字符串沿状态转移路径最终到达&quot;接受状态&quot;时，匹配成功。</p>
+<h3 id="2-2-两种引擎">2.2 两种引擎</h3>
+<p>常用的正则表达式的实现引擎有两种，分别是<strong>DFA</strong>（<em>Deterministic finite automation</em>, 确定有限自动机）和<strong>NFA</strong>（<em>Nondeterministic Finite Automaton</em>, 非确定有限自动机）。</p>
+<p>前者每个状态对每个输入只有唯一转移，效率高但功能受限；后者效率较低，但是支持<strong>回溯</strong>操作，功能更强，选择更多。</p>
+<h3 id="2-3-回溯机制">2.3 回溯机制</h3>
+<p>大多数现代语言使用<strong>回溯 NFA</strong>引擎。匹配时，引擎会尝试一条路径，若失败则回退到上一个选择点尝试其他路径。</p>
+<p>例如用 <code>a.*b</code> 匹配 <code>axxbxxb</code>：</p>
+<ol>
+<li class="lvl-3">
+<p><code>a</code> 匹配第一个字符</p>
+</li>
+<li class="lvl-3">
+<p><code>.*</code> 剩余所有字符均被接受</p>
+</li>
+<li class="lvl-3">
+<p>发现后面没有 <code>b</code> 了，开始回溯</p>
+</li>
+<li class="lvl-3">
+<p>回退到最后一个 <code>b</code>，匹配成功</p>
+</li>
+</ol>
+<p>然而，很显然地，回溯可能导致性能问题，如经典的 <code>(a+)+b</code> 面对大量 <code>a</code> 时会产生<strong>灾难性回溯</strong>（<em>Catastrophic Backtracking</em>）。</p>
+<hr>
+<h2 id="三、语法-Grammar">三、语法 | Grammar</h2>
+<h3 id="3-1-普通字符">3.1 普通字符</h3>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.</code></td>
+<td>匹配任意字符（除换行）</td>
+</tr>
+<tr>
+<td><code>\d</code></td>
+<td>数字</td>
+</tr>
+<tr>
+<td><code>\D</code></td>
+<td>非数字</td>
+</tr>
+<tr>
+<td><code>\w</code></td>
+<td>匹配字母数字下划线</td>
+</tr>
+<tr>
+<td><code>\s</code></td>
+<td>空白字符（空格、Tab、换行）</td>
+</tr>
+<tr>
+<td><code>\S</code></td>
+<td>非空白字符</td>
+</tr>
+<tr>
+<td><code>\b</code></td>
+<td>单词边界</td>
+</tr>
+<tr>
+<td><code>\B</code></td>
+<td>非单词边界</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-2-非打印字符">3.2 非打印字符</h3>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\f</code></td>
+<td>换页符</td>
+</tr>
+<tr>
+<td><code>\n</code></td>
+<td>换行符</td>
+</tr>
+<tr>
+<td><code>\r</code></td>
+<td>回车符</td>
+</tr>
+<tr>
+<td><code>\t</code></td>
+<td>制表符</td>
+</tr>
+<tr>
+<td><code>\v</code></td>
+<td>垂直制表符</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-3-特殊字符">3.3 特殊字符</h3>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>含义</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$</code></td>
+<td>字符串结尾</td>
+<td></td>
+</tr>
+<tr>
+<td><code>()</code></td>
+<td>标记子表达式</td>
+<td></td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>匹配前面的表达式零次或多次</td>
+<td>贪婪</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>匹配前面的表达式一次或多次</td>
+<td>贪婪</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>匹配前面的表达式零次或一次</td>
+<td></td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>字符串开始或在方括号里表示取反</td>
+<td></td>
+</tr>
+<tr>
+<td><code>\</code></td>
+<td>转义</td>
+<td>例如想匹配&quot;.“时需要使用”\.&quot;</td>
+</tr>
+</tbody>
+</table>
+<h4 id="3-3-1-贪婪与非贪婪">3.3.1 贪婪与非贪婪</h4>
+<p>称一个符号是贪婪的，即它会尽可能多的匹配；称一个符号是非贪婪的，即它会尽可少多的匹配。在贪婪的符号后加上<code>?</code>即可将其转换为非贪婪。</p>
+<figure class="highlight bnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bnf">字符串：<span class="hljs-attribute">&lt;div&gt;</span>Hello<span class="hljs-attribute">&lt;/div&gt;</span><br>贪婪：<span class="hljs-attribute">&lt;.*&gt;</span>  匹配 <span class="hljs-attribute">&lt;div&gt;</span>Hello<span class="hljs-attribute">&lt;/div&gt;</span><br>懒惰：<span class="hljs-attribute">&lt;.*?&gt;</span> 匹配 <span class="hljs-attribute">&lt;div&gt;</span> 和 <span class="hljs-attribute">&lt;/div&gt;</span> <br></code></pre></td></tr></table></figure>
+<h3 id="3-4-限定符">3.4 限定符</h3>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&#123;n&#125;</code></td>
+<td>匹配前面的表达式确定的 n 次</td>
+</tr>
+<tr>
+<td><code>&#123;n,&#125;</code></td>
+<td>匹配前面的表达式至少 n 次</td>
+</tr>
+<tr>
+<td><code>&#123;n,m&#125;</code></td>
+<td>匹配前面的表达式 n 到 m 次</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-4-分组">3.4 分组</h3>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>(abc) </code></td>
+<td>定义一个可以被捕获的组</td>
+</tr>
+<tr>
+<td><code>(?:abc)</code></td>
+<td>定义一个不可以被捕获的组</td>
+</tr>
+<tr>
+<td><code>(?&lt;name&gt;abc)</code></td>
+<td>定义并命名一个可以被捕获的组</td>
+</tr>
+<tr>
+<td><code>\1</code></td>
+<td>反向引用第 1 个捕获组</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-5-断言">3.5 断言</h3>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>(?=...)</code></td>
+<td>正向先行断言（后面是什么）</td>
+</tr>
+<tr>
+<td><code>(?!...)</code></td>
+<td>负向先行断言（后面不是什么）</td>
+</tr>
+<tr>
+<td><code>(?&lt;=...)</code></td>
+<td>正向后行断言（前面是什么）</td>
+</tr>
+<tr>
+<td><code>(?&lt;!...)</code></td>
+<td>负向后行断言（前面不是什么）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-6-常用修饰符">3.6 常用修饰符</h3>
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>i</code></td>
+<td>忽略大小写</td>
+</tr>
+<tr>
+<td><code>g</code></td>
+<td>全局匹配</td>
+</tr>
+<tr>
+<td><code>m</code></td>
+<td>多行模式</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="四、应用-Application">四、应用 | Application</h2>
+<h3 id="5-1-验证合法性">5.1 验证合法性</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs regex"># 邮箱<br>^[\w.%+-]+@[\w.-]+\.[A-Za-z]&#123;2,&#125;$<br><br># 手机号（中国大陆）<br>^1[3-9]\d&#123;9&#125;$<br><br># 身份证号（18 位）<br>^[1-9]\d&#123;5&#125;(18|19|20)\d&#123;2&#125;(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])\d&#123;3&#125;[\dXx]$<br><br># URL<br>^https?://[\w.-]+(:\d+)?(/[\w./?%&amp;=]*)?$<br><br># IPv4<br>^((25[0-5]|2[0-4]\d|[01]?\d\d?)\.)&#123;3&#125;(25[0-5]|2[0-4]\d|[01]?\d\d?)$<br><br># 日期（YYYY-MM-DD）<br>^\d&#123;4&#125;-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$<br><br># 密码（8-16位，含大小写和数字）<br>^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&amp;]&#123;8,16&#125;$<br></code></pre></td></tr></table></figure>
+<h3 id="5-2-查询-更改">5.2 查询/更改</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>驼峰转下划线</strong>：<code>([a-z])([A-Z])</code> -&gt; <code>$1_$2</code>，再转小写</p>
+</li>
+<li class="lvl-2">
+<p><strong>删除空行</strong>：查找 <code>^\s*\n</code> 替换为空</p>
+</li>
+<li class="lvl-2">
+<p>…</p>
+</li>
+</ul>
+<h3 id="5-3-OI中高效实现程序">5.3 OI中高效实现程序</h3>
+<p>例如对于<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P7911">P7911 [CSP-J 2021] 网络连接</a>，有一步需要判断地址串是否合法，如果用判断写需要如下代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(<span class="hljs-type">char</span> s[])</span></span>&#123;<br>	<span class="hljs-type">int</span> a=<span class="hljs-number">-1</span>,b=<span class="hljs-number">-1</span>,c=<span class="hljs-number">-1</span>,d=<span class="hljs-number">-1</span>,e=<span class="hljs-number">-1</span>;<br>	<span class="hljs-type">int</span> t=<span class="hljs-built_in">sscanf</span>(s,<span class="hljs-string">&quot;%d.%d.%d.%d:%d&quot;</span>,&amp;a,&amp;b,&amp;c,&amp;d,&amp;e);<span class="hljs-comment">//尝试读入，保存至s中</span><br>	<span class="hljs-keyword">if</span>(t!=<span class="hljs-number">5</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<span class="hljs-comment">//没有5个肯定不行</span><br>	<span class="hljs-keyword">if</span>(a&lt;<span class="hljs-number">0</span>||a&gt;<span class="hljs-number">255</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">if</span>(b&lt;<span class="hljs-number">0</span>||b&gt;<span class="hljs-number">255</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">if</span>(c&lt;<span class="hljs-number">0</span>||c&gt;<span class="hljs-number">255</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">if</span>(d&lt;<span class="hljs-number">0</span>||d&gt;<span class="hljs-number">255</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">if</span>(e&lt;<span class="hljs-number">0</span>||e&gt;<span class="hljs-number">65535</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<span class="hljs-comment">//判断</span><br>	<span class="hljs-type">char</span> s2[<span class="hljs-number">35</span>];<br>	<span class="hljs-built_in">sprintf</span>(s2,<span class="hljs-string">&quot;%d.%d.%d.%d:%d&quot;</span>,a,b,c,d,e);<span class="hljs-comment">//保存至s2中</span><br>	<span class="hljs-type">int</span> lens=<span class="hljs-built_in">strlen</span>(s);<span class="hljs-comment">//接下来判断s2和s是否一样</span><br>	<span class="hljs-type">bool</span> ok=<span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;lens;i++)&#123;<br>		<span class="hljs-keyword">if</span>(s[i]==s2[i]) ok=<span class="hljs-number">1</span>;<br>		<span class="hljs-keyword">else</span>&#123;<br>			ok=<span class="hljs-number">0</span>;<br>			<span class="hljs-keyword">break</span>;<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">return</span> ok;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>但是如果使用正则表达式仅需要如下代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp">smatch results;<br><span class="hljs-function">regex <span class="hljs-title">r</span><span class="hljs-params">(<span class="hljs-string">&quot;(([0-9])|([1-9][0-9])|(1[0-9][0-9])|(2[0-4][0-9])|(25[0-5]))[.](([0-9])|([1-9][0-9])|(1[0-9][0-9])|(2[0-4][0-9])|(25[0-5]))[.](([0-9])|([1-9][0-9])|(1[0-9][0-9])|(2[0-4][0-9])|(25[0-5]))[.](([0-9])|([1-9][0-9])|(1[0-9][0-9])|(2[0-4][0-9])|(25[0-5]))[:](([0-9])|([1-9][0-9])|([1-9][0-9][0-9])|([1-9][0-9][0-9][0-9])|([1-5][0-9][0-9][0-9][0-9])|(6[0-4][0-9][0-9][0-9])|(65[0-4][0-9][0-9])|(655[0-2][0-9])|(6553[0-5]))&quot;</span>)</span></span>;<br><span class="hljs-keyword">if</span>(<span class="hljs-built_in">regex_match</span>(ad,r))&#123;<br>	...<br>&#125;	<br></code></pre></td></tr></table></figure>
+<h3 id="5-4-寻找单词-短语">5.4 寻找单词/短语</h3>
+<p>例如匹配网站<a target="_blank" rel="noopener" href="https://nutrimatic.org/2024/">Nutrimatic</a>便使用了正则表达式的语法和部分拓展，使用它便可轻松匹配符合特定格式的单词/短语，按频率依次排列。</p>
+<p>例如使用<code>_t_t_t_</code>即可轻松匹配到statute和其它结果。</p>
+<hr>
+<h2 id="六、总结-Summary">六、总结 | Summary</h2>
+<p>正则表达式是一门投入小、回报大、还能装点小逼的技能，十分建议学习。</p>
+<p>掌握正则表达式，绝对能让你的文本处理效率提升一个数量级，并能在各种地方发现它，运用它。</p>
+<blockquote>
+<p><em><strong>理解、阅读、思辨</strong></em></p>
+</blockquote>
+<hr>
+<hr>
+<p><em>参考资源：</em></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>MDN Web Docs - Regular Expressions</p>
+</li>
+<li class="lvl-2">
+<p>正则表达式 - 百度百科</p>
+</li>
+<li class="lvl-2">
+<p>cppreference - Regular expressions</p>
+</li>
+<li class="lvl-2">
+<p><a target="_blank" rel="noopener" href="http://regex101.com">regex101.com</a></p>
+</li>
+<li class="lvl-2">
+<p>正则表达式 - 菜鸟教程</p>
+</li>
+<li class="lvl-2">
+<p>博客园、知乎与CSDN的各种文章</p>
+</li>
+</ul>
+
+    <p><img src="https://ts1.tc.mm.bing.net/th/id/R-C.1ca64a49b72a80af601e04b5dd28a25b?rik=XJHcbJf%2f3A5kRw&riu=http%3a%2f%2fwww.jongordon.com%2fpositivetip%2fsocialshare%2fThankYou.jpg&ehk=AEiksOmPd0XgKYwyMvcGR1Wn4ix63Wkt1Nu4yrBGDQI%3d&risl=&pid=ImgRaw&r=0" loading="lazy"></p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>light5QAQ<br>
+        <strong>本文链接：</strong><a href="https://light5qaq.github.io/2026/10/03/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%EF%BC%9A%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A/" title="https:&#x2F;&#x2F;light5qaq.github.io&#x2F;2026&#x2F;10&#x2F;03&#x2F;%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%EF%BC%9A%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;light5qaq.github.io&#x2F;2026&#x2F;10&#x2F;03&#x2F;%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%EF%BC%9A%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Code/" rel="tag">Code</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Help/" rel="tag">Help</a>
+    
+</div>
+  
+  
+    <script async src="/js/copy-codeblock.js?v=1791033388400"></script>
+  
+
+  
+      <div class="nexmoe-post-footer">
+          请在你的配置文件中设置 slotComment
+
+      </div>
+  
+</div></div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
+        <div class="nexmoe-tool">
+
+            
+
+            
+            
+            <button class="mdui-fab catalog" style="overflow:unset;">
+                <i class="nexmoefont icon-i-catalog"></i>
+                <div class="nexmoe-toc">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%EF%BC%9A%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A"><span class="toc-number">1.</span> <span class="toc-text">正则表达式完全指南：从入门到精通</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Complete-Guide-of-Regular-Expression-Beginner-to-Mastery"><span class="toc-number">1.1.</span> <span class="toc-text">The Complete Guide of Regular Expression: Beginner to Mastery</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%AE%80%E4%BB%8B-Introduction"><span class="toc-number">1.2.</span> <span class="toc-text">一、简介 | Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E4%BB%80%E4%B9%88%E6%98%AF%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.1 什么是正则表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2"><span class="toc-number">1.2.2.</span> <span class="toc-text">1.2 发展历史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.2.3.</span> <span class="toc-text">1.3 为什么需要正则表达式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%8E%9F%E7%90%86-Principle"><span class="toc-number">1.3.</span> <span class="toc-text">二、原理 | Principle</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="toc-number">1.3.1.</span> <span class="toc-text">2.1 有限状态自动机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E4%B8%A4%E7%A7%8D%E5%BC%95%E6%93%8E"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.2 两种引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%9B%9E%E6%BA%AF%E6%9C%BA%E5%88%B6"><span class="toc-number">1.3.3.</span> <span class="toc-text">2.3 回溯机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%AF%AD%E6%B3%95-Grammar"><span class="toc-number">1.4.</span> <span class="toc-text">三、语法 | Grammar</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%99%AE%E9%80%9A%E5%AD%97%E7%AC%A6"><span class="toc-number">1.4.1.</span> <span class="toc-text">3.1 普通字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E9%9D%9E%E6%89%93%E5%8D%B0%E5%AD%97%E7%AC%A6"><span class="toc-number">1.4.2.</span> <span class="toc-text">3.2 非打印字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6"><span class="toc-number">1.4.3.</span> <span class="toc-text">3.3 特殊字符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-1-%E8%B4%AA%E5%A9%AA%E4%B8%8E%E9%9D%9E%E8%B4%AA%E5%A9%AA"><span class="toc-number">1.4.3.1.</span> <span class="toc-text">3.3.1 贪婪与非贪婪</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E9%99%90%E5%AE%9A%E7%AC%A6"><span class="toc-number">1.4.4.</span> <span class="toc-text">3.4 限定符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E5%88%86%E7%BB%84"><span class="toc-number">1.4.5.</span> <span class="toc-text">3.4 分组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E6%96%AD%E8%A8%80"><span class="toc-number">1.4.6.</span> <span class="toc-text">3.5 断言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-%E5%B8%B8%E7%94%A8%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-number">1.4.7.</span> <span class="toc-text">3.6 常用修饰符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%BA%94%E7%94%A8-Application"><span class="toc-number">1.5.</span> <span class="toc-text">四、应用 | Application</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E9%AA%8C%E8%AF%81%E5%90%88%E6%B3%95%E6%80%A7"><span class="toc-number">1.5.1.</span> <span class="toc-text">5.1 验证合法性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E6%9F%A5%E8%AF%A2-%E6%9B%B4%E6%94%B9"><span class="toc-number">1.5.2.</span> <span class="toc-text">5.2 查询&#x2F;更改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-OI%E4%B8%AD%E9%AB%98%E6%95%88%E5%AE%9E%E7%8E%B0%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.5.3.</span> <span class="toc-text">5.3 OI中高效实现程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-%E5%AF%BB%E6%89%BE%E5%8D%95%E8%AF%8D-%E7%9F%AD%E8%AF%AD"><span class="toc-number">1.5.4.</span> <span class="toc-text">5.4 寻找单词&#x2F;短语</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%80%BB%E7%BB%93-Summary"><span class="toc-number">1.6.</span> <span class="toc-text">六、总结 | Summary</span></a></li></ol></li></ol>
+                </div>
+            </button>
+            
+
+            
+
+            <a href="#nexmoe-content" class="backtop toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+        </div>
+    </div>
+</div></div><div id="nexmoe-footer"><!--!--></div><div id="nexmoe-search-space"><div class="search-container"><div class="search-header"><div class="search-input-container"><input class="search-input" type="text" placeholder="搜索" onInput="sinput();"></div><a class="search-close" onclick="sclose();">×</a></div><div class="search-body"></div></div></div><div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
+</div></body></html>
